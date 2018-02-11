@@ -22,6 +22,7 @@ class data extends Seeder
                     'password' => bcrypt('12345'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
+                    'role' => 1,
                 ],
                 [
                     'name' => 'hiepgays',
@@ -29,6 +30,7 @@ class data extends Seeder
                     'password' => bcrypt('12345'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
+                    'role' => 0,
                 ]
             ]);
 
