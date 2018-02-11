@@ -23,5 +23,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+          Gate::define('phuong', function ($user) {
+        return $user->role_id == 1;
+    });
     }
 }

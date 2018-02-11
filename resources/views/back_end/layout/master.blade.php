@@ -23,48 +23,13 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
-            <i class="fas fa-wrench"></i>
-            <span class="nav-link-text">Quản Lý</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents1">
-            <li>
-              <a href="{{ url('subject/list') }}">Chủ Đề</a>
-            </li>
-            <li>
-              <a href="{{ url('user/list') }}">Người Dùng</a>
-            </li>
-            <li>
-              <a href="{{ url('publisher/list') }}">NXB</a>
-            </li>
-            <li>
-              <a href="{{ url('author/list') }}">Tác giả</a>
-            </li>
-            <li>
-              <a href="{{ url('book/list') }}">Sách</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fas fa-wrench"></i>
             <span class="nav-link-text">Quản Lý</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="{{ url('subject/list') }}">Chủ Đề</a>
-            </li>
-            <li>
-              <a href="{{ url('user/list') }}">Người Dùng</a>
-            </li>
-            <li>
-              <a href="{{ url('publisher/list') }}">NXB</a>
-            </li>
-            <li>
-              <a href="{{ url('author/list') }}">Tác giả</a>
-            </li>
-            <li>
-              <a href="{{ url('book/list') }}">Sách</a>
+              <a href="{{ url('user') }}">Người Dùng</a>
             </li>
           </ul>
         </li>
@@ -81,7 +46,9 @@
           </span>
         </li>
         <li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
-          <span class="nav-link-text">Địa chỉ IP của bạn :</span>
+          <span class="nav-link-text">Địa chỉ IP của bạn :{{Auth::user()->last_login_ip}}</span>
+        </li><li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
+          <span class="nav-link-text">Lần cuối đăng nhập :{{Auth::user()->last_login_at}}</span>
         </li>
         
       </ul>
@@ -92,83 +59,85 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fas fa-sign-out-alt"></i>Đăng Xuất</a>
-          </li>
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link"> {{Auth::user()->name}}</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#logout">
+          <i class="fas fa-sign-out-alt"></i>Đăng Xuất</a>  
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      @yield('breadcrumb')
+      @yield('content')
+      @if (session('message'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
+      @if (session('message1'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('message1') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
+      @if (count($errors)>0)
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
         </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </nav>
-    <div class="content-wrapper">
-      <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        @yield('breadcrumb')
-        @yield('content')
-        @if (session('message'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          {{ session('message') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      @endif
+    </div>
+    <!-- /.container-fluid-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
         </div>
-        @endif
-        @if (session('message1'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          {{ session('message1') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
-        @if (count($errors)>0)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
       </div>
-      <!-- /.container-fluid-->
-      <footer class="sticky-footer">
-        <div class="container">
-          <div class="text-center">
-            <small>Copyright © Your Website 2018</small>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Đăng xuất</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
           </div>
-        </div>
-      </footer>
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-      <!-- Logout Modal-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Đăng xuất</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">Bạn có chắc chắn 100% muốn đăng xuất</div>
-            <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-dismiss="modal">Hủy</button>
-              <a class="btn btn-primary " onclick="document.getElementById('logout-form').submit();">Đăng xuất</a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-              </form>
-            </div>
+          <div class="modal-body">Bạn có chắc chắn 100% muốn đăng xuất</div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" data-dismiss="modal">Hủy</button>
+            <a class="btn btn-primary " onclick="document.getElementById('logout-form').submit();">Đăng xuất</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+            </form>
           </div>
         </div>
       </div>
     </div>
-    @include('back_end.layout.js')
-  </body>
-  </html>
+  </div>
+  @include('back_end.layout.js')
+</body>
+</html>

@@ -12,6 +12,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('phuong');
     }
     //Danh Sách
     public function getlist()
@@ -24,28 +25,21 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        $users = new User;
-        $users->name = $request->user_name_add;
-        $users->email = $request->user_mail_add;
-        $users-> save();    
-    }
-    //Đến trang Sửa
-    public function show($id)
-    {
-        return User::findorfail($id); 	
+            $users = new User;
+            $users->name = $request->user_name_add;
+            $users->email = $request->user_mail_add;
+            $users-> save();  
     }
     public function edit($id)
     {
         return User::findorfail($id);   
     }
-    //Sửa
     public function update($id,Request $request){
         $users = User::findorfail($id);
         $users->name = $request->name;
         $users->email = $request->email;
         $users-> save();
     }    
-    //Xóa
     public function destroy(Request $request)
     {
         $users = User::all();

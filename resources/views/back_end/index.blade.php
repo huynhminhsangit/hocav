@@ -1,6 +1,7 @@
 @extends('back_end.layout.master')
 @section('title','Trang Chủ')
 @section('content')
+Đây là trang mẫu
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-bordered table-hover table-dark text-center">
         <thead>

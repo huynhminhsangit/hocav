@@ -13,9 +13,8 @@ app.controller('UserController', function ($scope, $http,API){
 		})
 		.then(function(response) {
 			console.log($scope.user_add);
-			location.reload();
 		}, 
-    function(response) { // optional
+    function(response) {
     	console.log($scope.user_add);
     });
 	}
@@ -38,7 +37,7 @@ app.controller('UserController', function ($scope, $http,API){
 			console.log($scope.user_edit);
 			location.reload();
 		}, 
-    function(response) { // optional
+    function(response) {
     	console.log($scope.user_edit);
     });
 	}

@@ -13,8 +13,8 @@
   <div class="card-header">
     <i class="fa fa-address-book"></i> DANH SÁCH NGƯỜI DÙNG</div>
     <div class="card-body">
-      <form method="POST" action="list/delete" id="del">
-        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+      <form method="POST" action="deluser" id="del">
+        {{ csrf_field() }}
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover table-dark text-center" id="dataTable">
             <thead>
@@ -50,23 +50,29 @@
           </button>
         </div>
         <div class="modal-body">
-          <form name="frmuser">
+          <form name="frmadd">
             <div class="form-group">
               <label class="control-label col-sm-3">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true">
-              </div>
+                <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true" ng-maxlength="12" ng-minlength="6">                
+              </div>             
+              <div class="alert alert-success m-1" ng-show="frmadd.user_name_add.$error.required">Cần nhập</div>
+                <div class="alert alert-success m-1" ng-show="frmadd.user_name_add.$error.minlength">Ít nhất 3 ký tự</div>
+                <div class="alert alert-success m-1" ng-show="frmadd.user_name_add.$error.maxlength">Nhiều nhất 30 ký tự</div> 
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3">Email:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" value="{{ old('user_mail_add') }}" name="user_mail_add" ng-model="user_add.user_mail_add" ng-required="true">
+                <input type="email" class="form-control" value="{{ old('user_mail_add') }}" name="user_mail_add" ng-model="user_add.user_mail_add" ng-required="true" ng-maxlength="12" ng-minlength="6">                
               </div>
+              <div class="alert alert-success m-1" ng-show="frmadd.user_mail_add.$error.required">Cần nhập</div>
+                <div class="alert alert-success m-1" ng-show="frmadd.user_mail_add.$error.minlength">Ít nhất 3 ký tự</div>
+                <div class="alert alert-success m-1" ng-show="frmadd.user_mail_add.$error.maxlength">Nhiều nhất 30 ký tự</div>
             </div>
             <div class="form-group">        
               <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" class="btn btn-default" ng-click="store()">Đồng ý</button>
-                <button type="reset" class="btn btn-default">Nhập lại</button>
+                <button type="submit" class="btn btn-primary" ng-click="store()" ng-disable="frmadd.$invalid">Đồng ý</button>
+                <button type="reset" class="btn btn-primary">Nhập lại</button>
               </div>        
             </div>
           </form>
@@ -86,7 +92,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form name="frmuser">
+          <form name="frmedit">
             <div class="form-group">
               <label class="control-label col-sm-3">Tên:</label>
               <div class="col-sm-10">
