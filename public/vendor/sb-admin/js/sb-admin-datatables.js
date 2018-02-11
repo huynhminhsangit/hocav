@@ -6,7 +6,7 @@ $(document).ready(function() {
         {
             text: 'Thêm',
             action: function ( e, dt, node, config ) {
-                $('#myModal').modal('show');
+                $('#add').modal('show');
             }
         },
         {

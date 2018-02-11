@@ -25,23 +25,25 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $users = new User;
-        $users->name = $request->user_name;
-        $users->email = $request->user_mail;
-        $users-> save();   
+        $users->name = $request->user_name_add;
+        $users->email = $request->user_mail_add;
+        $users-> save();    
     }
     //Đến trang Sửa
-    public function getedit($id)
+    public function show($id)
     {
-        $users = User::find($id); 
-        return view('Back_end.User.edit',compact('users')); 	
+        return User::findorfail($id); 	
+    }
+    public function edit($id)
+    {
+        return User::findorfail($id);   
     }
     //Sửa
-    public function postedit($id,UserEditRequest $request){
-        $users = User::find($id);
-        $users->name = $request->user_name;
-        $users->email = $request->user_email;
+    public function update($id,Request $request){
+        $users = User::findorfail($id);
+        $users->name = $request->name;
+        $users->email = $request->email;
         $users-> save();
-        return redirect()->back()->with('message', 'Cập nhật thành công!');  
     }    
     //Xóa
     public function destroy(Request $request)

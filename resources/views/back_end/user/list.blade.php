@@ -13,25 +13,34 @@
   <div class="card-header">
     <i class="fa fa-address-book"></i> DANH SÁCH NGƯỜI DÙNG</div>
     <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover table-dark text-center" id="dataTable">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tên</th>
-            </tr>
-          </thead>
-          <tbody ng-repeat="user in user">
-            <tr>
-              <td class="align-middle"><% user.id %></td>
-              <td class="align-middle"><% user.name %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <form method="POST" action="list/delete" id="del">
+        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover table-dark text-center" id="dataTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Sửa</th>
+                <th><input type="checkbox" id="checkall"></th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="listuser in listuser">
+              <tr>
+                <td class="align-middle"><% listuser.id %></td>
+                <td class="align-middle"><% listuser.name %></td>
+                <td class="align-middle"><% listuser.email %></td>
+                <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate(listuser.id)">Sửa</button></td>
+                <td class="align-middle"><input type="checkbox" name="checked[]" ng-value="listuser.id"></td> 
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -45,18 +54,54 @@
             <div class="form-group">
               <label class="control-label col-sm-3">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" value="{{ old('name') }}" name="user_name" ng-model="users.user_name" ng-required="true">
+                <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3">Email:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" value="{{ old('email') }}" name="user_mail" ng-model="users.user_mail" ng-required="true">
+                <input type="email" class="form-control" value="{{ old('user_mail_add') }}" name="user_mail_add" ng-model="user_add.user_mail_add" ng-required="true">
               </div>
             </div>
             <div class="form-group">        
               <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" class="btn btn-default" ng-click="save()">Đồng ý</button>
+                <button type="submit" class="btn btn-default" ng-click="store()">Đồng ý</button>
+                <button type="reset" class="btn btn-default">Nhập lại</button>
+              </div>        
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sửa</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form name="frmuser">
+            <div class="form-group">
+              <label class="control-label col-sm-3">Tên:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" value="{{ old('user_name_edit') }}" name="name" ng-model="user_edit.name" ng-required="true">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Email:</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" value="{{ old('user_email_edit') }}" name="email" ng-model="user_edit.email" ng-required="true">
+              </div>
+            </div>
+            <div class="form-group">        
+              <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-default" ng-click="update(user_edit.id)">Đồng ý</button>
                 <button type="reset" class="btn btn-default">Nhập lại</button>
               </div>        
             </div>
