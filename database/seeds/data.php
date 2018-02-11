@@ -17,22 +17,22 @@ class data extends Seeder
             DB::table('users')->insert([
 
                 [
-                    'name' => 'Administrator',
+                    'name' => 'ad',
                     'email' => 'admin@app.com',
                     'password' => bcrypt('password'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'name' => 'Agency',
-                    'email' => 'agency@app.com',
+                    'name' => 'k',
+                    'email' => 'k@app.com',
                     'password' => bcrypt('password'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'name' => 'End',
-                    'email' => 'endcustomer@app.com',
+                    'name' => 'c',
+                    'email' => 'c@app.com',
                     'password' => bcrypt('password'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
