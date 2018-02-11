@@ -17,27 +17,19 @@ class data extends Seeder
             DB::table('users')->insert([
 
                 [
-                    'name' => 'ad',
-                    'email' => 'admin@app.com',
-                    'password' => bcrypt('password'),
+                    'name' => 'admin',
+                    'email' => 'admin@gmail.com',
+                    'password' => bcrypt('12345'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ],
                 [
-                    'name' => 'k',
-                    'email' => 'k@app.com',
-                    'password' => bcrypt('password'),
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ],
-                [
-                    'name' => 'c',
-                    'email' => 'c@app.com',
-                    'password' => bcrypt('password'),
+                    'name' => 'hiepgays',
+                    'email' => 'hiepgays@gmail.com',
+                    'password' => bcrypt('12345'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]
-
             ]);
 
         } else { echo "\e[31mTable is not empty, therefore NOT "; }
