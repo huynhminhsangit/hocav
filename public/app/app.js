@@ -2,6 +2,6 @@ var app = angular.module('my-app', [], function($interpolateProvider) {
 	$interpolateProvider.startSymbol('<%');
 	$interpolateProvider.endSymbol('%>');
 });
-app.constant('API','http://localhost:81/hoctienganh/public/');
+app.constant('API','http://hocav.herokuapp.com/');
 
 

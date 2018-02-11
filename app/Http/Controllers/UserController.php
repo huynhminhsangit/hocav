@@ -27,8 +27,7 @@ class UserController extends Controller
         $users = new User;
         $users->name = $request->user_name;
         $users->email = $request->user_mail;
-        $users-> save();
-        return route('user.index');     
+        $users-> save();   
     }
     //Đến trang Sửa
     public function getedit($id)
