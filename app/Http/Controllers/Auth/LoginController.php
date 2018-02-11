@@ -19,6 +19,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    protected $redirectTo = '/';
     use AuthenticatesUsers;
     public function __construct()
     {
