@@ -11,13 +11,36 @@ class data extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345'),
-            'created_at' => '2018-01-30 22:55:27',
-            'updated_at' => '2018-01-30 22:55:28',
+        // check if table users is empty
+        if(DB::table('users')->get()->count() == 0){
 
-        ]);
+            DB::table('users')->insert([
+
+                [
+                    'name' => 'Administrator',
+                    'email' => 'admin@app.com',
+                    'password' => bcrypt('password'),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'name' => 'Agency',
+                    'email' => 'agency@app.com',
+                    'password' => bcrypt('password'),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'name' => 'End',
+                    'email' => 'endcustomer@app.com',
+                    'password' => bcrypt('password'),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]
+
+            ]);
+
+        } else { echo "\e[31mTable is not empty, therefore NOT "; }
+
     }
 }
