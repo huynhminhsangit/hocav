@@ -31,22 +31,4 @@ class User extends Authenticatable
     {
         $this->notify(new MailResetPasswordToken($token));
     } 
-    public function phuong()
-    {
-       return $this->role == 1;
-    }
-    public function vumap()
-    {
-        return $this->role == 2;
-
-        return false;
-    }
-    public function chidat()
-    {
-        return $this->role == 3;
-    }
-    public function hiepgays()
-    {
-        return $this->role == 4;
-    }
 }
