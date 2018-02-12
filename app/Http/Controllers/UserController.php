@@ -40,11 +40,16 @@ class UserController extends Controller
         return User::findorfail($id);   
     }
     public function update($id,Request $request){
-        $users = User::findorfail($id);
-        $users->name = $request->user_name_edit;
-        $users->email = $request->user_email_edit;
-        $users-> save();
-        return redirect()->back()->with('message', 'Cập nhật thành công!'); 
+        try{
+            $users = User::findorfail($id);
+            $users->name = $request->user_name_edit;
+            $users->email = $request->user_email_edit;
+            $users-> save();
+            return redirect()->back()->with('message', 'Cập nhật thành công!'); 
+        } 
+        catch(\Exception $e) {
+            return redirect()->back()->with('message1', 'Trùng !'); 
+        } 
     }    
     public function destroy(Request $request)
     {
@@ -52,6 +57,6 @@ class UserController extends Controller
         $checked = $request->input('checked');
 
         User::destroy($checked);
-        return redirect()->back();   
+        return redirect()->back()->with('message', 'Cập nhật thành công!');  
     }    
 }
