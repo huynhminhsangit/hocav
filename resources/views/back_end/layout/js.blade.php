@@ -18,8 +18,11 @@
 
       <script src="{{asset('vendor/sb-admin/js/sb-admin-datatables.js')}}"></script>
       <script src="{{asset('vendor/sb-admin/js/sb-admin.min.js')}}"></script>
+
       <script src="{{asset('app/lib/angular.min.js')}}"></script>
+      <script src="{{asset('app/lib/moment.min.js')}}"></script>
+      <script src="{{asset('app/lib/locale/vi.js')}}"></script>
+      <script src="{{asset('app/lib/angular-moment.min.js')}}"></script>
       <script src="{{asset('app/app.js')}}"></script>
-      <script src="{{asset('app/UserController.js')}}"></script>
 
       <script src="{{asset('back_end/js/web.js')}}"></script>

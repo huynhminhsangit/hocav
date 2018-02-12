@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="my-app">
+<html lang="en" ng-app="myapp">
 @include('back_end.layout.head')
 <body class="fixed-nav sticky-footer bg-dark" id="page-top"  ng-controller="UserController">
   <!-- Navigation-->

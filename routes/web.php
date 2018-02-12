@@ -15,5 +15,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 
 Route::resource('user', 'UserController',['except'=>['destroy','create','show']]);
-Route::get('getlistuser', 'UserController@getlist');
 Route::post('deluser', 'UserController@destroy');
+Route::get('getlistuser', 'UserController@getlistuser');

@@ -14,7 +14,7 @@
     <i class="fa fa-address-book"></i> DANH SÁCH NGƯỜI DÙNG</div>
     <div class="card-body">
       <form method="POST" action="deluser" id="del">
-        {{ csrf_field() }}
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover table-dark text-center" id="dataTable">
             <thead>
@@ -22,17 +22,19 @@
                 <th>ID</th>
                 <th>Tên</th>
                 <th>Email</th>
+                <th>Thời Gian Cập Nhật</th>
                 <th>Sửa</th>
                 <th><input type="checkbox" id="checkall"></th>
               </tr>
             </thead>
-            <tbody ng-repeat="listuser in listuser">
+            <tbody ng-repeat="user in users">
               <tr>
-                <td class="align-middle"><% listuser.id %></td>
-                <td class="align-middle"><% listuser.name %></td>
-                <td class="align-middle"><% listuser.email %></td>
-                <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate(listuser.id)">Sửa</button></td>
-                <td class="align-middle"><input type="checkbox" name="checked[]" ng-value="listuser.id"></td> 
+                <td class="align-middle"><% user.id %></td>
+                <td class="align-middle"><% user.name %></td>
+                <td class="align-middle"><% user.email %></td>
+                <td class="align-middle"><time am-time-ago="user.updated_at"></time> </td>
+                <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate(user.id)">Sửa</button></td>
+                <td class="align-middle"><input type="checkbox" name="checked[]" ng-value="user.id"></td> 
               </tr>
             </tbody>
           </table>
@@ -49,29 +51,32 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form name="frmadd">
+        <div>
+          <form action="{{ url('user') }}" method="POST" name="frmadd" novalidate>
+            {{ csrf_field() }}
             <div class="form-group">
               <label class="control-label col-sm-3">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true" ng-maxlength="12" ng-minlength="6">                
+                <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true" autocomplete="off" ng-pattern="/^[A-Z][a-z]/">
+                <div ng-show="frmadd.user_name_add.$dirty && frmadd.user_name_add.$invalid">
+                  <span class="help-block text-danger" ng-show="frmadd.user_name_add.$error.required">Không Được Trống</span>
+                  <span class="help-block text-danger" ng-show="frmadd.user_name_add.$error.pattern">Chữ Đầu Phải Ghi Hoa</span>  
+                </div>
               </div>             
-              <div class="alert alert-success m-1" ng-show="frmadd.user_name_add.$error.required">Cần nhập</div>
-                <div class="alert alert-success m-1" ng-show="frmadd.user_name_add.$error.minlength">Ít nhất 3 ký tự</div>
-                <div class="alert alert-success m-1" ng-show="frmadd.user_name_add.$error.maxlength">Nhiều nhất 30 ký tự</div> 
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3">Email:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" value="{{ old('user_mail_add') }}" name="user_mail_add" ng-model="user_add.user_mail_add" ng-required="true" ng-maxlength="12" ng-minlength="6">                
+                <input type="email" class="form-control" value="{{ old('user_email_add') }}" name="user_email_add" ng-model="user_add.user_email_add" ng-required="true" autocomplete="off">  
+                <div ng-show="frmadd.user_email_add.$dirty && frmadd.user_email_add.$invalid"> 
+                  <span class="help-block text-danger" ng-show="frmadd.user_email_add.$error.required">Không Được Trống</span>
+                  <span class="help-block text-danger" ng-show="frmadd.user_email_add.$error.email">Phải là chuẩn email</span>
+                </div>             
               </div>
-              <div class="alert alert-success m-1" ng-show="frmadd.user_mail_add.$error.required">Cần nhập</div>
-                <div class="alert alert-success m-1" ng-show="frmadd.user_mail_add.$error.minlength">Ít nhất 3 ký tự</div>
-                <div class="alert alert-success m-1" ng-show="frmadd.user_mail_add.$error.maxlength">Nhiều nhất 30 ký tự</div>
             </div>
             <div class="form-group">        
               <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" class="btn btn-primary" ng-click="store()" ng-disable="frmadd.$invalid">Đồng ý</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="frmadd.$invalid">Đồng ý</button>
                 <button type="reset" class="btn btn-primary">Nhập lại</button>
               </div>        
             </div>
@@ -91,23 +96,29 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form name="frmedit">
+        <div class="modal-body">          
+          <form action="<% 'user/' + user_edit.id %>" method="POST" name="frmedit" novalidate>
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
               <label class="control-label col-sm-3">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" value="{{ old('user_name_edit') }}" name="name" ng-model="user_edit.name" ng-required="true">
+                <input type="text" class="form-control" value="{{ old('user_name_edit') }}" name="user_name_edit" ng-model="user_edit.name" ng-required="true" autocomplete="off" ng-pattern="/^[A-Z][a-z]/">
+                <span class="help-block text-danger" ng-show="frmedit.user_name_edit.$error.required">Không Được Trống</span>
+                 <span class="help-block text-danger" ng-show="frmedit.user_name_edit.$error.pattern">Chữ Đầu Phải Ghi Hoa</span> 
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3">Email:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" value="{{ old('user_email_edit') }}" name="email" ng-model="user_edit.email" ng-required="true">
+                <input type="email" class="form-control" value="{{ old('user_email_edit') }}" name="user_email_edit" ng-model="user_edit.email" ng-required="true" autocomplete="off">
+                <span class="help-block text-danger" ng-show="frmedit.user_email_edit.$error.required">Không Được Trống</span>
+                 <span class="help-block text-danger" ng-show="frmedit.user_email_edit.$error.email">Phải là chuẩn email</span>
               </div>
             </div>
             <div class="form-group">        
               <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" class="btn btn-default" ng-click="update(user_edit.id)">Đồng ý</button>
+                <button type="submit" class="btn btn-default" ng-disabled="frmedit.$invalid">Đồng ý</button>
                 <button type="reset" class="btn btn-default">Nhập lại</button>
               </div>        
             </div>
