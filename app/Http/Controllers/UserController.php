@@ -26,7 +26,7 @@ class UserController extends Controller
             $users = new User;
             $users->name = $request->user_name_add;
             $users->email = $request->user_email_add;
-            $users->password = encrypt('12345');
+            $users->password = bcrypt('12345');
             $users-> save(); 
             return redirect()->back()->with('message', 'Cập nhật thành công!'); 
         } 
