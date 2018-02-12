@@ -6,7 +6,6 @@
         <div class="card m-5">
             <h5 class="card-header text-center">ĐĂNG NHẬP</h5>
             <div class="card-body">
-
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}" novalidate>
                     {{ csrf_field() }}
 
@@ -29,7 +28,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-8 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
@@ -44,9 +42,20 @@
                 </form>
             </div>
             <div class="card-footer text-muted">
-                2 days ago
-            </div>
-        </div>
-    </div>
+                @if (count($errors)>0)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              @endif
+          </div>
+      </div>
+  </div>
 </div>
 @endsection
