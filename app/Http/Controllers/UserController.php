@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         return view('back_end.user.list');    
     }
-    public function store(UserAddRequest $request)
+    public function store(Request $request)
     {
         try{
             $users = new User;
