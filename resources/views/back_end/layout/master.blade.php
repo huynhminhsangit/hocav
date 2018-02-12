@@ -23,7 +23,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion"  data-background-icon=''>
             <i class="fas fa-wrench"></i>
             <span class="nav-link-text">Quản Lý</span>
           </a>
@@ -108,7 +108,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2018</small>
+          <small>Copyright © Your Website 2018 </small>
         </div>
       </div>
     </footer>
