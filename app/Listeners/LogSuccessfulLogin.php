@@ -31,6 +31,7 @@ class LogSuccessfulLogin
         $user = $event->user;
         $user->last_login_at = date('Y-m-d H:i:s');
         $user->last_login_ip = \Request::getClientIp(true);
+        $user->timestamps = false;
         $user->save();
     }
 }
