@@ -47,6 +47,7 @@ class PersonalController extends Controller
                 $users->name = $request->user_name_personal;
                 $users->email = $request->user_email_personal;
                 $users->image = $file_name;
+                $request->file('image')->delete('upload/',$file_name);
                 $request->file('image')->move('upload/',$file_name);
                 $users-> save();
                 return redirect()->back()->with('message', 'Cập nhật thành công!');            
