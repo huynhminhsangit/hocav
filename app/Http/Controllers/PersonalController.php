@@ -44,12 +44,11 @@ class PersonalController extends Controller
 
             if($request->hasFile('avatar'))
             {    
-                Storage::delete('public/avatars/'.$users->avatar);         
-                $file_name=$request->file('avatar')->getClientOriginalName();
+                Storage::disk('public1')->delete('avatars/'.$users->avatar);        
                 $users->name = $request->user_name_personal;
-                $users->email = $request->user_email_personal;
-                $users->avatar = $file_name; 
-                $request->file('avatar')->storeAs('public/avatars/', $file_name);              
+                $users->email = $request->user_email_personal;                 
+                $request->file('avatar')->store('avatars', 'public1');
+                $users->avatar = $request->file('avatar')->store('', 'public1');            
                 $users-> save();
                 return redirect()->back()->with('message', 'Cập nhật thành công!');            
             }

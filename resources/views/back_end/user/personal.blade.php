@@ -45,8 +45,8 @@
         <div class="col-sm-2 text-center">
           <div class="card">
             <h5 class="card-header">Hình Ảnh</h5>    
-              <img src="<%'storage/avatars/blank.png'%>" class="card-img" height="150px" width="250px" ng-if="!personal.avatar"/>        
-            <img src="<%'storage/avatars/'+ personal.avatar%>" class="card-img" height="150px" width="250px" ng-if="personal.avatar"/>
+              <img src="<%'upload/avatars/blank.png'%>" class="card-img" height="150px" width="250px" ng-if="!personal.avatar"/>        
+            <img src="<%'upload/avatars/'+ personal.avatar%>" class="card-img" height="150px" width="250px" ng-if="personal.avatar"/>
           </div>
         </div>
       </div>

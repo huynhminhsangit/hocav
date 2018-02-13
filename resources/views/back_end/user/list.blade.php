@@ -35,8 +35,8 @@
                   <td class="align-middle"><% user.name %></td>
                   <td class="align-middle"><% user.email %></td>
                   <td>
-                    <img src="<%'storage/avatars/blank.png'%>" class="card-img" height="150px" width="250px" ng-if="!user.avatar"/>        
-                    <img src="<%'storage/avatars/'+ user.avatar%>" class="card-img" height="150px" width="250px" ng-if="user.avatar"/>
+                    <img src="<%'upload/avatars/blank.png'%>" class="card-img" height="150px" width="250px" ng-if="!user.avatar"/>        
+                    <img src="<%'upload/avatars/'+ user.avatar%>" class="card-img" height="150px" width="250px" ng-if="user.avatar"/>
                   </td>
                   <td class="align-middle"><time am-time-ago="user.updated_at"></time> </td>
                   <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate(user.id)">Sửa</button></td>
