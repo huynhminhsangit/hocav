@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 align-self-center">
             <div class="panel panel-default">
-                <div class="panel-heading">Cấp lại mật khẩu</div>
+                <div class="panel-heading p-5">Cấp lại mật khẩu</div>
 
                 <div class="panel-body">
                     @if (session('status'))
