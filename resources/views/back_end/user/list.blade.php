@@ -46,7 +46,7 @@
                   
                   <td class="align-middle">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $users->updated_at)->diffForHumans() }} </td>
                   <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate({{$users->id}})">Sửa</button></td>
-                  <td class="align-middle"><input type="checkbox" name="checked[]" value="$users->id"></td> 
+                  <td class="align-middle"><input type="checkbox" name="checked[]" value="{{$users->id}}"></td> 
                 </tr>
                 @endforeach
               </tbody>
