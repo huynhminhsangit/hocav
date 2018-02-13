@@ -45,6 +45,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate"
         ],
+		"post-install-cmd": [
+		"ln -sr public/storage storage/app/public"
+		],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
