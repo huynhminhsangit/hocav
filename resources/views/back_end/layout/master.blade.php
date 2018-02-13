@@ -50,9 +50,9 @@
         </li><li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
           <span class="nav-link-text">Lần cuối đăng nhập :
             @if(!Auth::user()->last_login_at)
-            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', Auth::user()->last_login_at)->diffForHumans() }}
-            @else
             0
+            @else
+            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', Auth::user()->last_login_at)->diffForHumans() }}
             @endif
           </span>
         </li>
