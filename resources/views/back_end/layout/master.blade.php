@@ -74,9 +74,9 @@
       <ul class="navbar-nav ml-auto">
         @if(!Auth::user()->avatar)
         <li class="nav-item">          
-          <img src="{{ url('storage/avatars/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
+          <img src="{{ url('upload/avatars/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
           @else
-          <img src="{{ url('storage/avatars/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
+          <img src="{{ url('upload/avatars/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
         </li>
         @endif
         <li class="nav-item">
