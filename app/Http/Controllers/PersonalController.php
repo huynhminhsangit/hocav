@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use file;
+use Illuminate\Support\Facades\Storage;
 class PersonalController extends Controller
 {
     public function __construct()
@@ -36,20 +36,20 @@ class PersonalController extends Controller
             }
             else
                 return redirect()->back()->with('message1', 'Sai mật khẩu cũ');
-    }
+        }
     //Đến trang Sửa
-          public function postedit(Request $request)
+        public function postedit(Request $request)
         {
             $users = User::find(Auth::user()->id);
 
-            if($request->hasFile('image'))
-            {               
-                $file_name=$request->file('image')->getClientOriginalName();
+            if($request->hasFile('avatar'))
+            {    
+                Storage::delete('public/avatars/'.$users->avatar);         
+                $file_name=$request->file('avatar')->getClientOriginalName();
                 $users->name = $request->user_name_personal;
                 $users->email = $request->user_email_personal;
-                $users->image = $file_name;
-                File::delete('upload/',$file_name);
-                $request->file('image')->move('upload/',$file_name);
+                $users->avatar = $file_name; 
+                $request->file('avatar')->storeAs('public/avatars', $file_name);              
                 $users-> save();
                 return redirect()->back()->with('message', 'Cập nhật thành công!');            
             }
@@ -58,4 +58,4 @@ class PersonalController extends Controller
             $users-> save();
             return redirect()->back()->with('message', 'Cập nhật thành công!');  
         }
-}
+    }

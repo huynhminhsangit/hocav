@@ -59,85 +59,92 @@
           </a>
         </li>
       </ul>
-     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link"> {{Auth::user()->name}}</a>
+      <ul class="navbar-nav ml-auto">
+        @if(!Auth::user()->avatar)
+        <li class="nav-item">          
+          <img src="{{ url('storage/avatars/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
+          @else
+          <img src="{{ url('storage/avatars/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
         </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#logout">
-          <i class="fas fa-sign-out-alt"></i>Đăng Xuất</a>  
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      @yield('breadcrumb')
-      @yield('content')
-      @if (session('message'))
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('message') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      @endif
-      @if (session('message1'))
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('message1') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      @endif
-      @if (count($errors)>0)
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
+        @endif
+        <li class="nav-item">
+          <a class="nav-link"> {{Auth::user()->name}}</a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#logout">
+            <i class="fas fa-sign-out-alt"></i>Đăng Xuất</a>  
+          </li>
         </ul>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      @endif
-    </div>
-    <!-- /.container-fluid-->
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Your Website 2018 </small>
+    </nav>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        @yield('breadcrumb')
+        @yield('content')
+        @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('message') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+        @if (session('message1'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('message1') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+        @if (count($errors)>0)
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+      </div>
+      <!-- /.container-fluid-->
+      <footer class="sticky-footer">
+        <div class="container">
+          <div class="text-center">
+            <small>Copyright © Your Website 2018 </small>
+          </div>
+        </div>
+      </footer>
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Đăng xuất</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn 100% muốn đăng xuất</div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-dismiss="modal">Hủy</button>
+              <a class="btn btn-primary " id="logout">Đăng xuất</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                {{ csrf_field() }}
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Đăng xuất</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Bạn có chắc chắn 100% muốn đăng xuất</div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="button" data-dismiss="modal">Hủy</button>
-            <a class="btn btn-primary " id="logout">Đăng xuất</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-              {{ csrf_field() }}
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  @include('back_end.layout.js')
-</body>
-</html>
+    @include('back_end.layout.js')
+  </body>
+  </html>
