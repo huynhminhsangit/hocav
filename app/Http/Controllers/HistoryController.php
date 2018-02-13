@@ -12,13 +12,10 @@ class HistoryController extends Controller
         $this->middleware('auth');
         $this->middleware('phuong');
     }
-    public function getlisthistory()
-    { 
-        return UserAction::all();   
-    }
     public function index()
-    {
-        return view('back_end.history.list');    
+    {   
+        $history=UserAction::all(); 
+        return view('back_end.history.list',compact('history'));    
     }
     public function destroy(Request $request)
     {

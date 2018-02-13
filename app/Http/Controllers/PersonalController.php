@@ -19,6 +19,7 @@ class PersonalController extends Controller
     }
     public function index()
     {
+        User::find(Auth::user()->id);  
         return view('back_end.user.personal') ;    
     }
     public function editpass()

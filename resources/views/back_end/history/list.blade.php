@@ -9,7 +9,6 @@
 </ol>
 @endsection
 @section('content')
-<div ng-controller="HistoryController">
   <div class="card mb-3">
     <div class="card-header">
       <i class="fa fa-address-book"></i> LỊCH SỬ</div>
@@ -29,20 +28,21 @@
                   <th><input type="checkbox" id="checkall"></th>
                 </tr>
               </thead>
-              <tbody ng-repeat="history in history">
+              <tbody>
+                @foreach($history as $history)
                 <tr>
-                  <td class="align-middle"><% history.id %></td>
-                  <td class="align-middle"><% history.user_id %></td>
-                  <td class="align-middle"><% history.action %></td>
-                  <td class="align-middle"><% history.action_model %></td>
-                  <td class="align-middle"><% history.action_id %></td>
-                  <td class="align-middle"><% history.created_at | amUtc | amDateFormat:' HH:mm:ss || DD.MM.YYYY' %></time> </td>
-                  <td class="align-middle"><input type="checkbox" name="checked[]" ng-value="history.id"></td> 
+                  <td class="align-middle">{{$history->id}}</td>
+                  <td class="align-middle">{{$history->user_id}}</td>
+                  <td class="align-middle">{{$history->action}}</td>
+                  <td class="align-middle">{{$history->action_model}}</td>
+                  <td class="align-middle">{{$history->action_id}}</td>
+                  <td class="align-middle">{{$history->created_at}}</td>
+                  <td class="align-middle"><input type="checkbox" name="checked[]" value="$history->id"></td> 
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
         </form>
-      </div>
-    </div>    
+      </div>   
     @endsection

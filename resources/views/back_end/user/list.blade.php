@@ -29,25 +29,32 @@
                   <th><input type="checkbox" id="checkall"></th>
                 </tr>
               </thead>
-              <tbody ng-repeat="user in users">
+              <tbody>
+                @foreach($users as $users)
                 <tr>
-                  <td class="align-middle"><% user.id %></td>
-                  <td class="align-middle"><% user.name %></td>
-                  <td class="align-middle"><% user.email %></td>
-                  <td>
-                    <img src="<%'upload/avatars/blank.png'%>" class="card-img" height="150px" width="250px" ng-if="!user.avatar"/>        
-                    <img src="<%'upload/avatars/'+ user.avatar%>" class="card-img" height="150px" width="250px" ng-if="user.avatar"/>
+                  <td class="align-middle">{{$users->id}} </td>
+                  <td class="align-middle">{{$users->name}}</td>
+                  <td class="align-middle">{{$users->email}}</td>
+                  
+                  <td>   
+                  @if(!$users->avatar)                 
+                    <img src="{{url('upload/avatars/blank.png')}}" class="rounded" height="100px" width="100px"/>
+                    @else        
+                    <img src="{{url('upload/avatars/'. $users->avatar)}}" class="rounded" height="100px" width="100px"/>  
+                    @endif                  
                   </td>
-                  <td class="align-middle"><time am-time-ago="user.updated_at"></time> </td>
-                  <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate(user.id)">Sửa</button></td>
-                  <td class="align-middle"><input type="checkbox" name="checked[]" ng-value="user.id"></td> 
+                  
+                  <td class="align-middle">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $users->updated_at)->diffForHumans() }} </td>
+                  <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate({{$users->id}})">Sửa</button></td>
+                  <td class="align-middle"><input type="checkbox" name="checked[]" value="$users->id"></td> 
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
         </form>
       </div>
-    </div>
+    </div>    
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -132,5 +139,5 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
   @endsection

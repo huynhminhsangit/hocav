@@ -12,13 +12,10 @@ class UserController extends Controller
         $this->middleware('auth');
         $this->middleware('phuong');
     }
-    public function getlistuser()
-    { 
-        return User::all();   
-    }
     public function index()
     {
-        return view('back_end.user.list');    
+       $users = User::all();  
+        return view('back_end.user.list',compact('users'));    
     }
     public function store(Request $request)
     {
