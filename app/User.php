@@ -10,6 +10,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static function boot()
+    {
+        parent::boot();
+
+        User::observe(new \App\Observers\UserActionsObserver);
+    }
     /**
      * The attributes that are mass assignable.
      *

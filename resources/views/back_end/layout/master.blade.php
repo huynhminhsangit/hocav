@@ -35,8 +35,14 @@
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="{{ url('personal') }}">
-            <i class="fa fa-fw fa-link"></i>
+            <i class="fas fa-user"></i>
             <span class="nav-link-text">Trang cá nhân</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="{{ url('history') }}">
+            <i class="fas fa-history"></i>
+            <span class="nav-link-text">Lịch Sử Hành Động</span>
           </a>
         </li>
         <li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
