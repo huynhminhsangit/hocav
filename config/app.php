@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://hocav.herokuapp.com/'),
+    'url' => env('APP_URL', 'http://hocav.herokuapp.com'),
 
     /*
     |--------------------------------------------------------------------------
