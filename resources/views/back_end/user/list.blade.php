@@ -23,6 +23,7 @@
                   <th>ID</th>
                   <th>Tên</th>
                   <th>Email</th>
+                  <th>Hình Ảnh</th>
                   <th>Thời Gian Cập Nhật</th>
                   <th>Sửa</th>
                   <th><input type="checkbox" id="checkall"></th>
