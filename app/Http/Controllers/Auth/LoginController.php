@@ -38,7 +38,7 @@ class LoginController extends Controller
     protected function incrementLoginAttempts(Request $request)
     {
         $this->limiter()->hit(
-            $this->throttleKey($request), 60
+            $this->throttleKey($request), 1
         );
     }
     public function logout(Request $request)
