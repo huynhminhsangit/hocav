@@ -13,9 +13,8 @@
             <div class="form-group">
               <label class="control-label col-sm-2">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" readonly ng-required="true" autocomplete="off" ng-pattern="/^[A-Z][a-z]/">
-                <span class="help-block text-danger" ng-show="frmpersonal.user_name_personal.$error.required">Không Được Trống</span>
-                  <span class="help-block text-danger" ng-show="frmpersonal.user_name_personal.$error.pattern">Chữ Đầu Phải Ghi Hoa</span>  
+                <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" readonly ng-required="true" autocomplete="off">
+                <span class="help-block text-danger" ng-show="frmpersonal.user_name_personal.$error.required">Không Được Trống</span> 
               </div>
             </div>
             <div class="form-group">

@@ -109,9 +109,8 @@
               <div class="form-group">
                 <label class="control-label col-sm-3">Tên:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ old('user_name_edit') }}" name="user_name_edit" ng-model="user_edit.name" ng-required="true" autocomplete="off" ng-pattern="/^[A-Z][a-z]/">
+                  <input type="text" class="form-control" value="{{ old('user_name_edit') }}" name="user_name_edit" ng-model="user_edit.name" ng-required="true" autocomplete="off">
                   <span class="help-block text-danger" ng-show="frmedit.user_name_edit.$error.required">Không Được Trống</span>
-                  <span class="help-block text-danger" ng-show="frmedit.user_name_edit.$error.pattern">Chữ Đầu Phải Ghi Hoa</span> 
                 </div>
               </div>
               <div class="form-group">
