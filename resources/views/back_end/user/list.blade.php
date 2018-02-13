@@ -33,6 +33,10 @@
                   <td class="align-middle"><% user.id %></td>
                   <td class="align-middle"><% user.name %></td>
                   <td class="align-middle"><% user.email %></td>
+                  <td>
+                    <img src="<%'upload/blank.png'%>" class="card-img" height="150px" width="250px" ng-if="!user.image"/>        
+                    <img src="<%'upload/'+ user.image%>" class="card-img" height="150px" width="250px" ng-if="user.image"/>
+                  </td>
                   <td class="align-middle"><time am-time-ago="user.updated_at"></time> </td>
                   <td class="align-middle"><button type="button" class="btn btn-default" ng-click="showupdate(user.id)">Sửa</button></td>
                   <td class="align-middle"><input type="checkbox" name="checked[]" ng-value="user.id"></td> 
