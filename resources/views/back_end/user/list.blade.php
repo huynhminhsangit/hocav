@@ -63,10 +63,9 @@
               <div class="form-group">
                 <label class="control-label col-sm-3">Tên:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true" autocomplete="off" ng-pattern="/^[A-Z][a-z]/">
+                  <input type="text" class="form-control" value="{{ old('user_name_add') }}" name="user_name_add" ng-model="user_add.user_name_add" ng-required="true" autocomplete="off">
                   <div ng-show="frmadd.user_name_add.$dirty && frmadd.user_name_add.$invalid">
                     <span class="help-block text-danger" ng-show="frmadd.user_name_add.$error.required">Không Được Trống</span>
-                    <span class="help-block text-danger" ng-show="frmadd.user_name_add.$error.pattern">Chữ Đầu Phải Ghi Hoa</span>  
                   </div>
                 </div>             
               </div>
