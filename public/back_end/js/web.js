@@ -11,7 +11,6 @@ $("#act").click (function () {
         	$("#descrip").prop("readonly",false);
         		$("#descrip1").prop("readonly",false);
                 $("#addButton").show();
-                $("#addButton1").show();
                 $("#imag").show();
                 
         });
@@ -19,6 +18,5 @@ $("#act").click (function () {
             $("#descrip").prop("readonly",true);
                 $("#descrip1").prop("readonly",true);
                 $("#addButton").hide();
-                $("#addButton1").hide();
                 $("#imag").hide();
         });

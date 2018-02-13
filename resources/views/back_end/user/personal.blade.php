@@ -14,7 +14,7 @@
               <label class="control-label col-sm-2">Tên:</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" readonly ng-required="true" autocomplete="off">
-                <span class="help-block text-danger" ng-show="frmpersonal.user_name_personal.$error.required">Không Được Trống</span> 
+                <span class="help-block text-danger" ng-value="frmpersonal.user_name_personal.$error.required" ng-show="frmpersonal.user_name_personal.$error.required">Không Được Trống</span> 
               </div>
             </div>
             <div class="form-group">
@@ -34,7 +34,6 @@
             <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default" id="addButton" style="display: none;">Đồng ý</button>
-                <button type="reset" class="btn btn-default" id="addButton1" style="display: none;">Nhập lại</button>
                 <button type="button" class="btn btn-default" id="act">Sửa</button>
                 <a class="pl-5" href="{{ url('personal/pass') }}">Đổi mật khẩu</a>
               </div>        

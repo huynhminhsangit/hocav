@@ -124,7 +124,6 @@
               <div class="form-group">        
                 <div class="col-sm-offset-3 col-sm-10">
                   <button type="submit" class="btn btn-default" ng-disabled="frmedit.$invalid">Đồng ý</button>
-                  <button type="reset" class="btn btn-default">Nhập lại</button>
                 </div>        
               </div>
             </form>

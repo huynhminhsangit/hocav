@@ -2,7 +2,7 @@ var app = angular.module('myapp', ['angularMoment'], function($interpolateProvid
 	$interpolateProvider.startSymbol('<%');
 	$interpolateProvider.endSymbol('%>');
 });
-app.constant('API','http://hocav.herokuapp.com/');
+app.constant('API','http://localhost:81/hoctienganh/public/');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
