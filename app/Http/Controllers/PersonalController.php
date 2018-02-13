@@ -49,7 +49,7 @@ class PersonalController extends Controller
                 $users->name = $request->user_name_personal;
                 $users->email = $request->user_email_personal;
                 $users->avatar = $file_name; 
-                $request->file('avatar')->storeAs('public/avatars', $file_name);              
+                $request->file('avatar')->storeAs('public/avatars/', $file_name);              
                 $users-> save();
                 return redirect()->back()->with('message', 'Cập nhật thành công!');            
             }
