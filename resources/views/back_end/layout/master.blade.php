@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myapp">
 @include('back_end.layout.head')
-<body class="fixed-nav sticky-footer bg-dark" id="page-top"  ng-controller="UserController">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="{{ url('/') }}">TRANG QUẢN TRỊ</a>
@@ -34,7 +34,7 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="{{ url('pe') }}">
+          <a class="nav-link" href="{{ url('personal') }}">
             <i class="fa fa-fw fa-link"></i>
             <span class="nav-link-text">Trang cá nhân</span>
           </a>
@@ -129,8 +129,8 @@
           <div class="modal-body">Bạn có chắc chắn 100% muốn đăng xuất</div>
           <div class="modal-footer">
             <button class="btn btn-primary" type="button" data-dismiss="modal">Hủy</button>
-            <a class="btn btn-primary " onclick="document.getElementById('logout-form').submit();">Đăng xuất</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <a class="btn btn-primary " id="logout">Đăng xuất</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
               {{ csrf_field() }}
             </form>
           </div>

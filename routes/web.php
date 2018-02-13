@@ -17,3 +17,14 @@ Route::get('/', 'HomeController@index');
 Route::resource('user', 'UserController',['except'=>['destroy','create','show']]);
 Route::post('deluser', 'UserController@destroy');
 Route::get('getlistuser', 'UserController@getlistuser');
+
+Route::get('getlistpersonal', 'PersonalController@getlistpersonal');
+
+Route::group(['prefix'=>'personal'],function(){
+
+	Route::get('', 'PersonalController@index');
+	Route::post('', 'PersonalController@postedit');
+	Route::get('pass', 'PersonalController@editpass');
+	Route::post('pass', 'PersonalController@posteditpass');
+});
+

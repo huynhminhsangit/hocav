@@ -9,9 +9,11 @@
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 </head>
 <body>
-        <nav class="navbar navbar-light bg-light">
-                   <strong class="h4"> QUẢN TRỊ</strong>
-        </nav>
-        @yield('content')
+    <nav class="navbar navbar-light bg-light">
+     <strong class="h4"> QUẢN TRỊ</strong>
+ </nav>
+ @yield('content')
+ <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+ <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>

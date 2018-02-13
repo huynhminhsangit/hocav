@@ -32,7 +32,21 @@ class LoginController extends Controller
     protected function hasTooManyLoginAttempts(Request $request)
     {
         return $this->limiter()->tooManyAttempts(
-            $this->throttleKey($request), 2, 1
+            $this->throttleKey($request), 2
         );
+    }
+    protected function incrementLoginAttempts(Request $request)
+    {
+        $this->limiter()->hit(
+            $this->throttleKey($request), 60
+        );
+    }
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        return redirect('/');
     }
 }
