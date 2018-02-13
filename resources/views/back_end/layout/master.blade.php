@@ -48,7 +48,13 @@
         <li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
           <span class="nav-link-text">Địa chỉ IP của bạn :{{Auth::user()->last_login_ip}}</span>
         </li><li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
-          <span class="nav-link-text">Lần cuối đăng nhập :{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', Auth::user()->last_login_at)->diffForHumans() }}</span>
+          <span class="nav-link-text">Lần cuối đăng nhập :
+            @if(1Auth::user()->last_login_at)
+            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', Auth::user()->last_login_at)->diffForHumans() }}
+            @else
+            0
+            @endif
+          </span>
         </li>
         
       </ul>
