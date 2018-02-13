@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+App::make('files')->link(storage_path('app/public'), public_path('storage'));
 
 use Illuminate\Http\Request;
 use App\User;
