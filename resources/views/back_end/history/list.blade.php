@@ -37,7 +37,7 @@
                   <td class="align-middle">{{$history->action_model}}</td>
                   <td class="align-middle">{{$history->action_id}}</td>
                   <td class="align-middle">{{$history->created_at}}</td>
-                  <td class="align-middle"><input type="checkbox" name="checked[]" value="$history->id"></td> 
+                  <td class="align-middle"><input type="checkbox" name="checked[]" value="{{$history->id}}"></td> 
                 </tr>
                 @endforeach
               </tbody>
