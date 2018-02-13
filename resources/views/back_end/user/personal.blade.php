@@ -13,13 +13,17 @@
             <div class="form-group">
               <label class="control-label col-sm-2">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" readonly>
+                <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" readonly ng-required="true" autocomplete="off" ng-pattern="/^[A-Z][a-z]/">
+                <span class="help-block text-danger" ng-show="frmedit.user_name_edit.$error.required">Không Được Trống</span>
+                  <span class="help-block text-danger" ng-show="frmedit.user_name_edit.$error.pattern">Chữ Đầu Phải Ghi Hoa</span>  
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Email:</label>
               <div class="col-sm-10">
-                <input type="Email" class="form-control" ng-model="personal.email" name="user_email_personal" id="descrip1" readonly>
+                <input type="Email" class="form-control" ng-model="personal.email" name="user_email_personal" id="descrip1" readonly ng-required="true" autocomplete="off">
+                <span class="help-block text-danger" ng-show="frmedit.user_email_edit.$error.required">Không Được Trống</span>
+                  <span class="help-block text-danger" ng-show="frmedit.user_email_edit.$error.email">Phải là chuẩn email</span>
               </div>
             </div>
             <div class="form-group"  id="imag" style="display: none;">

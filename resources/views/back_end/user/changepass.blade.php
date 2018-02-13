@@ -13,9 +13,9 @@
             <label for="password" class="col-md-4 control-label">Mật khẩu cũ</label>
 
             <div class="col-md-6">
-              <input id="password" type="password" class="form-control" name="password_old" ng-model="password_old" ng-required=true>
+              <input id="password" type="password" class="form-control" name="password_old" ng-model="password_old" ng-required=true autocomplete="off">
               <div ng-show="frmchangepass.password_old.$dirty && frmchangepass.password_old.$invalid">
-                <span class="text-danger" ng-show="frmchangepass.password_old.$error.required">  Chưa nhập  </span> 
+                <span class="text-danger" ng-show="frmchangepass.password_old.$error.required">  Không Được Trống  </span> 
               </div>
             </div>
           </div>
@@ -23,9 +23,9 @@
             <label for="password" class="col-md-4 control-label">Mật khẩu mới</label>
 
             <div class="col-md-6">
-              <input id="password" type="password" class="form-control" name="password_new" ng-model="password_new" ng-required=true>
+              <input id="password" type="password" class="form-control" name="password_new" ng-model="password_new" ng-required=true autocomplete="off">
               <div ng-show="frmchangepass.password_new.$dirty && frmchangepass.password_new.$invalid">
-                <span class="text-danger" ng-show="frmchangepass.password_new.$error.required">  Chưa nhập  </span> 
+                <span class="text-danger" ng-show="frmchangepass.password_new.$error.required">  Không Được Trống  </span> 
               </div>
             </div>
           </div>
