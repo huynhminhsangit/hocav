@@ -31,7 +31,7 @@
                 <label class="control-label col-sm-2">Hình Ảnh:</label>
                 <div class="col-sm-10">
                   <input type="file" ngf-select ng-model="picFile" name="file" >
-                  <img ng-show="frmpersonal.file.$valid" ngf-thumbnail="picFile" class="img-thumbnail" height="100px" width="100px"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                  <img ng-show="frmpersonal.file.$valid" ngf-thumbnail="picFile" class="img-thumbnail" height="100px" width="100px"> <button ng-click="picFile = null" ng-show="picFile">Xóa</button>
                 </div>
               </div>         
               <div class="form-group">        
