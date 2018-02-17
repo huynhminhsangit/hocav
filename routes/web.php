@@ -30,5 +30,5 @@ Route::group(['prefix'=>'personal'],function(){
 	Route::get('pass', 'PersonalController@editpass');
 	Route::post('pass', 'PersonalController@posteditpass');
 });
-Route::resource('banner', 'BannerController',['except'=>['destroy','create','show']]);
-Route::post('delbanner', 'BannerController@destroy');
+Route::resource('banner', 'BannerController',['except'=>['create','show']]);
+Route::get('getlistbanner', 'BannerController@getlistbanner');

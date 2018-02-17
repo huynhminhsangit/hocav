@@ -3,7 +3,7 @@ var app = angular.module('myapp', ['angularMoment','datatables', 'datatables.but
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://hocav.herokuapp.com/');
+app.constant('API','http://hocav.herokuapp.com//');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
@@ -190,7 +190,65 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
 
 });
 
-app.controller('BannerController', function ($scope, $http,API){
+app.controller('BannerController', function ($scope, Upload, $http,API,DTOptionsBuilder){
+  $scope.loadData = function() {
+    $http.get(API + 'getlistbanner').then(function(response){
+      $scope.banners=response.data;      
+    });
+  }
+  $scope.delete = function(id) {
+    $http.delete(API + 'banner/' + id).then(function(response){
+      $scope.loadData();
+    });
+  }
+  $scope.uploadPic = function(file) {
+    var url = API + 'banner';
+    if(!file)
+    {
+      var data = $scope.banner_add;
+      $http({
+        method: 'POST',
+        url: url,
+        data: data
+      }).then(function(response) {
+        $scope.massage=response.data;
+        $scope.loadData();
+      }, function(error) {
+       console.log(error);
+     });
+    }
+    else
+    {
+      file.upload = Upload.upload({
+        url: url,
+        data: {file: file ,banner_name_add:$scope.banner_add.banner_name_add,
+          banner_height_add:$scope.banner_add.banner_height_add
+          ,banner_width_add:$scope.banner_add.banner_width_add}
+      });
+      file.upload.then(function (response) {
+        $scope.massage=response.data;
+        $scope.loadData();
+      });
+    }
+  };
+
+  $scope.dtOptions = DTOptionsBuilder.newOptions()
+  .withDOM('bfltip')
+  .withLanguage(language)
+  .withButtons([
+    'colvis',
+    'csv',
+    'copy',
+    'print',
+    'excel',
+    'pdf',
+    {
+      text: 'Thêm',
+      action: function ( e, dt, node, config ) {
+        $('#add').modal('show');
+      }
+    }
+    ]);
 
 });
 

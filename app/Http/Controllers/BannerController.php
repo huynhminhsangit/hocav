@@ -13,20 +13,21 @@ class BannerController extends Controller
         $this->middleware('auth');
         $this->middleware('phuong');
     }
+    public function getlistbanner()
+    {   
+        return Banner::all();    
+    }
     public function index()
     {   
-        $banner=Banner::all(); 
-        return view('back_end.banner.list',compact('banner'));    
+        return view('back_end.banner.list');    
     }
-    public function destroy(Request $request)
+    public function destroy(Request $request,$id)
     {
-        $checked = $request->input('checked');
-        $banner = Banner::find($checked);
+        $banner = Banner::find($id);
         
 
-        Banner::destroy($checked);
+        Banner::destroy($id);
         Storage::disk('public1')->delete('banner/'.$banner->image); 
-        return redirect()->back()->with('message', 'Cập nhật thành công!');  
     }
     public function store(Request $request)
     {
@@ -36,16 +37,14 @@ class BannerController extends Controller
             $banner->name = $request->banner_name_add;
             $banner->height = $request->banner_height_add;
             $banner->width = $request->banner_width_add;
-            $thumbname = $request->file('banner')->store('thumb', 'public1');
-            $bannername = $request->file('banner')->store('banner', 'public1');
-            $banner->thumb = basename($thumbname);
+            $bannername = $request->file('file')->store('banner', 'public1');
             $banner->image = basename($bannername);
                        
             $banner-> save();
-            return redirect()->back()->with('message', 'Cập nhật thành công!');
+            return response()->json(['success' => 'Thêm Thành Công']);
         } 
         catch(\Exception $e) {
-            return redirect()->back()->with('message1', 'Trùng !'); 
+             return response()->json(['error' => 'Trùng']);
         } 
 
     }    
