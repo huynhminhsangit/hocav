@@ -3,7 +3,7 @@ var app = angular.module('myapp', ['angularMoment','datatables', 'datatables.but
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://hocav.herokuapp.com/');
+app.constant('API','http://localhost:81/hoctienganh/public/');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
@@ -89,7 +89,6 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
   $scope.delete = function(id) {
     $http.delete(API + 'user/' + id).then(function(response){
       $scope.loadData();
-      console.clear();
     });
   }
 
@@ -112,7 +111,6 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
     }).then(function(response) {
      $scope.massage=response.data;
      $scope.loadData();
-     console.clear();
    }, function(error) {
      console.log(error);
    });
@@ -128,7 +126,6 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
     }).then(function(response) {
      $scope.massage=response.data;
      $scope.loadData();
-     console.clear();
    }, function(error) {
      console.log(error);
    });
@@ -161,7 +158,6 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
       }).then(function(response) {
         $scope.massage=response.data;
         $scope.loadData();
-        console.clear();
       }, function(error) {
        console.log(error);
      });
@@ -190,7 +186,6 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
       $scope.massage=response.data;
       console.log(response);
       $scope.loadData();
-      console.clear();
     }, function(error) {
      console.log(error);
    });
@@ -201,7 +196,8 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
 app.controller('BannerController', function ($scope, Upload, $http,API,DTOptionsBuilder){
   $scope.loadData = function() {
     $http.get(API + 'getlistbanner').then(function(response){
-      $scope.banners=response.data;      
+      $scope.banners=response.data;    
+        console.clear();
     });
   }
   $scope.delete = function(id) {
@@ -221,7 +217,6 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       }).then(function(response) {
         $scope.massage=response.data;
         $scope.loadData();
-        console.clear();
       }, function(error) {
        console.log(error);
      });
@@ -237,7 +232,6 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       file.upload.then(function (response) {
         $scope.massage=response.data;
         $scope.loadData();
-        console.clear();
       });
     }
   };
@@ -308,7 +302,6 @@ app.controller('HistoryController', function ($scope, $http,API,DTOptionsBuilder
 
         }).then(function(response) {          
           $scope.loadData()
-          console.clear();
           $scope.selected = [];
         }, function(error) {
          console.log(error);
