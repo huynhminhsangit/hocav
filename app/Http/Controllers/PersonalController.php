@@ -18,8 +18,7 @@ class PersonalController extends Controller
         return User::find(Auth::user()->id);    
     }
     public function index()
-    {
-        User::find(Auth::user()->id);  
+    { 
         return view('back_end.user.personal') ;    
     }
     public function editpass()
@@ -33,29 +32,30 @@ class PersonalController extends Controller
                 $users = User::find(Auth::user()->id);
                 $users->password = bcrypt($request->password_new);
                 $users-> save();
-                return redirect()->back()->with('message', 'Cập nhật thành công!'); 
+                return response()->json(['success' => 'Sửa Mật Khẩu Thành Công']);
             }
             else
-                return redirect()->back()->with('message1', 'Sai mật khẩu cũ');
+                return response()->json(['error' => 'Sai Mật Khẩu Cũ']);
         }
     //Đến trang Sửa
         public function postedit(Request $request)
         {
             $users = User::find(Auth::user()->id);
 
-            if($request->hasFile('avatar'))
-            {    
-                Storage::disk('public1')->delete('avatars/'.$users->avatar);        
-                $users->name = $request->user_name_personal;
-                $users->email = $request->user_email_personal;                 
-                $request->file('avatar')->store('avatars', 'public1');
-                $users->avatar = $request->file('avatar')->store('', 'public1');            
+            if($request->hasFile('file'))
+            {           
+                Storage::disk('public1')->delete('avatars/'.$users->avatar);                     
+                $avatarname = $request->file('file')->store('avatars', 'public1');
+                $users->avatar = basename($avatarname);
+                $users->name = $request->name;
+                $users->email = $request->email;                          
                 $users-> save();
-                return redirect()->back()->with('message', 'Cập nhật thành công!');            
+                return response()->json(['success' => 'Cập Nhật Thành Công']);          
             }
-            $users->name = $request->user_name_personal;
-            $users->email = $request->user_email_personal;
+            else
+            $users->name = $request->name;
+            $users->email = $request->email;
             $users-> save();
-            return redirect()->back()->with('message', 'Cập nhật thành công!');  
+            return response()->json(['error' => 'Cập Nhật Thành Công']);
         }
     }

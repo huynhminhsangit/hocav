@@ -12,17 +12,16 @@ class HistoryController extends Controller
         $this->middleware('auth');
         $this->middleware('phuong');
     }
+    public function getlisthistory()
+    {                 
+        return UserAction::all();    
+    }
     public function index()
     {   
-        $history=UserAction::all(); 
-        return view('back_end.history.list',compact('history'));    
+        return view('back_end.history.list');    
     }
     public function destroy(Request $request)
     {
-        $users = UserAction::all();
-        $checked = $request->input('checked');
-
-        UserAction::destroy($checked);
-        return redirect()->back()->with('message', 'Cập nhật thành công!');  
+        UserAction::destroy($request->id);
     }    
 }

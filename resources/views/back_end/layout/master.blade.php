@@ -23,11 +23,28 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion"  data-background-icon=''>
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#layout" data-parent="#exampleAccordion"  data-background-icon=''>
+            <i class="fas fa-wrench"></i>
+            <span class="nav-link-text">Giao Diện</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="layout">
+            <li>
+              <a href="{{ url('banner') }}">Banner</a>
+            </li>
+            <li>
+              <a href="{{ url('user') }}">Slider</a>
+            </li>
+            <li>
+              <a href="{{ url('user') }}">Menu</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#manager" data-parent="#exampleAccordion"  data-background-icon=''>
             <i class="fas fa-wrench"></i>
             <span class="nav-link-text">Quản Lý</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <ul class="sidenav-second-level collapse" id="manager">
             <li>
               <a href="{{ url('user') }}">Người Dùng</a>
             </li>
@@ -74,9 +91,9 @@
       <ul class="navbar-nav ml-auto">
         @if(!Auth::user()->avatar)
         <li class="nav-item">          
-          <img src="{{ url('upload/avatars/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
+          <img ng-src="{{ url('upload/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
           @else
-          <img src="{{ url('upload/avatars/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
+          <img ng-src="{{ url('upload/avatars/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
         </li>
         @endif
         <li class="nav-item">
@@ -91,39 +108,9 @@
     </nav>
     <div class="content-wrapper">
       <div class="container-fluid">
-        <!-- Breadcrumbs-->
         @yield('breadcrumb')
         @yield('content')
-        @if (session('message'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          {{ session('message') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
-        @if (session('message1'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          {{ session('message1') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
-        @if (count($errors)>0)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
       </div>
-      <!-- /.container-fluid-->
       <footer class="sticky-footer">
         <div class="container">
           <div class="text-center">

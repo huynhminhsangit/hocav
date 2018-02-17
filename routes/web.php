@@ -14,15 +14,15 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('user', 'UserController',['except'=>['destroy','create','show']]);
-Route::post('deluser', 'UserController@destroy');
+Route::resource('user', 'UserController',['except'=>['create','show']]);
+Route::get('getlistuser', 'UserController@getlistuser');
 
 Route::resource('history', 'HistoryController',['except'=>['destroy','create','show']]);
-Route::post('delhistory', 'HistoryController@destroy');
+Route::get('getlisthistory', 'HistoryController@getlisthistory');
+Route::post('del', 'HistoryController@destroy');
 
 
 Route::get('getlistpersonal', 'PersonalController@getlistpersonal');
-
 Route::group(['prefix'=>'personal'],function(){
 
 	Route::get('', 'PersonalController@index');
@@ -30,4 +30,5 @@ Route::group(['prefix'=>'personal'],function(){
 	Route::get('pass', 'PersonalController@editpass');
 	Route::post('pass', 'PersonalController@posteditpass');
 });
-
+Route::resource('banner', 'BannerController',['except'=>['destroy','create','show']]);
+Route::post('delbanner', 'BannerController@destroy');

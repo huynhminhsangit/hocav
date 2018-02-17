@@ -12,10 +12,13 @@ class UserController extends Controller
         $this->middleware('auth');
         $this->middleware('phuong');
     }
+    public function getlistuser()
+    {
+        return User::all();     
+    }
     public function index()
     {
-       $users = User::all();  
-        return view('back_end.user.list',compact('users'));    
+        return view('back_end.user.list');    
     }
     public function store(Request $request)
     {
@@ -25,10 +28,10 @@ class UserController extends Controller
             $users->email = $request->user_email_add;
             $users->password = bcrypt('12345');
             $users-> save(); 
-            return redirect()->back()->with('message', 'Cập nhật thành công!'); 
+            return response()->json(['success' => 'Thêm Thành Công']);
         } 
         catch(\Exception $e) {
-            return redirect()->back()->with('message1', 'Trùng !'); 
+            return response()->json(['error' => 'Trùng']);
         } 
     }
     public function edit($id)
@@ -38,21 +41,17 @@ class UserController extends Controller
     public function update($id,Request $request){
         try{
             $users = User::findorfail($id);
-            $users->name = $request->user_name_edit;
-            $users->email = $request->user_email_edit;
+            $users->name = $request->name;
+            $users->email = $request->email;
             $users-> save();
-            return redirect()->back()->with('message', 'Cập nhật thành công!'); 
+            return response()->json(['success' => 'Sửa Thành Công']);
         } 
         catch(\Exception $e) {
-            return redirect()->back()->with('message1', 'Trùng !'); 
+            return response()->json(['error' => 'Trùng']);
         } 
     }    
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $users = User::all();
-        $checked = $request->input('checked');
-
-        User::destroy($checked);
-        return redirect()->back()->with('message', 'Cập nhật thành công!');  
+        User::destroy([$id]);       
     }    
 }

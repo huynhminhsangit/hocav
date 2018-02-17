@@ -9,40 +9,37 @@
 </ol>
 @endsection
 @section('content')
-  <div class="card mb-3">
-    <div class="card-header">
-      <i class="fa fa-address-book"></i> LỊCH SỬ</div>
-      <div class="card-body">
-        <form method="POST" action="delhistory" id="del">
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover table-dark text-center" id="dataTable">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>ID Người Thực Hiện</th>
-                  <th>Hành Động</th>
-                  <th>Bảng Thực Hiện</th>
-                  <th>ID Hành Động</th>
-                  <th>Thời Gian Cập Nhật</th>
-                  <th><input type="checkbox" id="checkall"></th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($history as $history)
-                <tr>
-                  <td class="align-middle">{{$history->id}}</td>
-                  <td class="align-middle">{{$history->user_id}}</td>
-                  <td class="align-middle">{{$history->action}}</td>
-                  <td class="align-middle">{{$history->action_model}}</td>
-                  <td class="align-middle">{{$history->action_id}}</td>
-                  <td class="align-middle">{{$history->created_at}}</td>
-                  <td class="align-middle"><input type="checkbox" name="checked[]" value="{{$history->id}}"></td> 
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </form>
-      </div>   
-    @endsection
+<div class="card mb-3" ng-controller="HistoryController">
+  <div class="card-header">
+    <i class="fa fa-address-book"></i> LỊCH SỬ</div>
+    <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover table-dark text-center" datatable="ng" dt-options="dtOptions" ng-init="loadData()">
+            <thead>
+              <tr>
+                <th>ID <% selected%></th>
+                <th>ID Người Thực Hiện</th>
+                <th>Hành Động</th>
+                <th>Bảng Thực Hiện</th>
+                <th>ID Hành Động</th>
+                <th>Thời Gian Cập Nhật</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="history in historys">
+                <td class="align-middle ng-cloak"><% history.id %></td>
+                <td class="align-middle ng-cloak"><% history.user_id %></td>
+                <td class="align-middle ng-cloak"><% history.action %></td>
+                <td class="align-middle ng-cloak"><% history.action_model %></td>
+                <td class="align-middle ng-cloak"><% history.action_id %></td>
+                <td class="align-middle ng-cloak"><% history.created_at %></td>
+                <td class="align-middle ng-cloak"><input type="checkbox" ng-model="selected" ng-checked="exist(history)" ng-click="selectedid(history.id)"></td> 
+              </tr>
+            </tbody>
+          </table>  
+        </div>
+    </div>
+
+  </div>  
+  @endsection
