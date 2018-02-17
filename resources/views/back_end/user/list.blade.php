@@ -36,7 +36,7 @@
                   <img ng-src="<%'upload/avatars/' + user.avatar %>" class="rounded ng-cloak" height="100px" width="100px" ng-if="user.avatar"/>
                   <img ng-src="<%'upload/blank.png'%>" class="rounded ng-cloak" height="100px" width="100px" ng-if="!user.avatar"/>                     
                 </td>                  
-                <td class="align-middle ng-cloak"><% user.updated_at%> </td>
+                <td class="align-middle ng-cloak"><% user.updated_at| amDateFormat:'dddd, Do MMMM  YYYY h:mm:ss'%> </td>
                 <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="showupdate(user.id)">Sửa</button></td>
                 <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="delete(user.id)">Xóa</button></td> 
               </tr>

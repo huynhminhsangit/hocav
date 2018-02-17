@@ -22,7 +22,7 @@
                 <th>Hành Động</th>
                 <th>Bảng Thực Hiện</th>
                 <th>ID Hành Động</th>
-                <th>Thời Gian Cập Nhật</th>
+                <th>Thời Gian</th>
                 <th></th>
               </tr>
             </thead>
@@ -33,7 +33,7 @@
                 <td class="align-middle ng-cloak"><% history.action %></td>
                 <td class="align-middle ng-cloak"><% history.action_model %></td>
                 <td class="align-middle ng-cloak"><% history.action_id %></td>
-                <td class="align-middle ng-cloak"><% history.created_at %></td>
+                <td class="align-middle ng-cloak"><% history.created_at | amDateFormat:'dddd, Do MMMM  YYYY h:mm:ss'%></td>
                 <td class="align-middle ng-cloak"><input type="checkbox" ng-model="selected" ng-checked="exist(history)" ng-click="selectedid(history.id)"></td> 
               </tr>
             </tbody>
