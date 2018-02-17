@@ -3,7 +3,7 @@ var app = angular.module('myapp', ['angularMoment','datatables', 'datatables.but
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://hocav.herokuapp.com//');
+app.constant('API','http://hocav.herokuapp.com/');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
@@ -82,12 +82,14 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
   $scope.loadData = function() {
     $http.get(API + 'getlistuser').then(function(response){
      $scope.users=response.data;
+     console.clear();
    });
   }
 
   $scope.delete = function(id) {
     $http.delete(API + 'user/' + id).then(function(response){
       $scope.loadData();
+      console.clear();
     });
   }
 
@@ -96,6 +98,7 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
     $('#update').modal('show');
     $http.get(API + 'user/' + id + '/edit').then(function(response){
      $scope.user_edit=response.data;
+     console.clear();
    });
   }
 
@@ -109,6 +112,7 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
     }).then(function(response) {
      $scope.massage=response.data;
      $scope.loadData();
+     console.clear();
    }, function(error) {
      console.log(error);
    });
@@ -124,6 +128,7 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
     }).then(function(response) {
      $scope.massage=response.data;
      $scope.loadData();
+     console.clear();
    }, function(error) {
      console.log(error);
    });
@@ -141,6 +146,7 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
   $scope.loadData = function() {
     $http.get(API + 'getlistpersonal').then(function(response){
       $scope.personal=response.data;
+      console.clear();
     })
   };
   $scope.uploadPic = function(file) {
@@ -155,6 +161,7 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
       }).then(function(response) {
         $scope.massage=response.data;
         $scope.loadData();
+        console.clear();
       }, function(error) {
        console.log(error);
      });
@@ -183,6 +190,7 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
       $scope.massage=response.data;
       console.log(response);
       $scope.loadData();
+      console.clear();
     }, function(error) {
      console.log(error);
    });
@@ -213,6 +221,7 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       }).then(function(response) {
         $scope.massage=response.data;
         $scope.loadData();
+        console.clear();
       }, function(error) {
        console.log(error);
      });
@@ -228,6 +237,7 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       file.upload.then(function (response) {
         $scope.massage=response.data;
         $scope.loadData();
+        console.clear();
       });
     }
   };
@@ -259,7 +269,8 @@ app.controller('HistoryController', function ($scope, $http,API,DTOptionsBuilder
 
   $scope.loadData = function() {
     $http.get(API + 'getlisthistory').then(function(response){
-      $scope.historys=response.data;      
+      $scope.historys=response.data;  
+      console.clear();    
     });
   }  
   $scope.exist = function(folder) {
@@ -297,6 +308,7 @@ app.controller('HistoryController', function ($scope, $http,API,DTOptionsBuilder
 
         }).then(function(response) {          
           $scope.loadData()
+          console.clear();
           $scope.selected = [];
         }, function(error) {
          console.log(error);
