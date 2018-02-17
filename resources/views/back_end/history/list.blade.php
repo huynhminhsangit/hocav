@@ -17,7 +17,7 @@
           <table class="table table-striped table-bordered table-hover table-dark text-center" datatable="ng" dt-options="dtOptions" ng-init="loadData()">
             <thead>
               <tr>
-                <th>ID <% selected%></th>
+                <th>ID</th>
                 <th>ID Người Thực Hiện</th>
                 <th>Hành Động</th>
                 <th>Bảng Thực Hiện</th>
