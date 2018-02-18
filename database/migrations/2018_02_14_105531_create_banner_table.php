@@ -19,6 +19,7 @@ class CreateBannerTable extends Migration
             $table->char('name');
             $table->integer('height');
             $table->integer('width');
+            $table->integer('set_up');
             $table->timestamps();
         });
     }

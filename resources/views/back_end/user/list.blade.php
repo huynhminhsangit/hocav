@@ -139,14 +139,14 @@
             </form>
           </div>
           <div class="modal-footer col-sm-10">
-            <div class="alert alert-success alert-dismissible fade show" role="alert" ng-if="massage.success">
-              <% massage.success %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" ng-if="massage_edit.success">
+              <% massage_edit.success %>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" ng-if="massage.error">
-              <% massage.error %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" ng-if="massage_edit.error">
+              <% massage_edit.error %>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

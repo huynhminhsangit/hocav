@@ -19,7 +19,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin';
     use AuthenticatesUsers;
     public function __construct()
     {
@@ -47,6 +47,6 @@ class LoginController extends Controller
 
         $request->session()->flush();
 
-        return redirect('/');
+        return redirect('/admin');
     }
 }

@@ -6,12 +6,8 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
-        return view('back_end.index');
+        return view('front_end.index');
     }
 }

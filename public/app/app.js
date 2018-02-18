@@ -3,7 +3,7 @@ var app = angular.module('myapp', ['angularMoment','datatables', 'datatables.but
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://localhost:81/hoctienganh/public/');
+app.constant('API','http://hocav.herokuapp.com/');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
@@ -59,6 +59,10 @@ app.directive("compareTo", function ()
     }  
   };  
 });
+
+
+
+
 
 app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, DTColumnBuilder){
 
@@ -124,7 +128,7 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
       url: url,
       data: data
     }).then(function(response) {
-     $scope.massage=response.data;
+     $scope.massage_edit=response.data;
      $scope.loadData();
    }, function(error) {
      console.log(error);
@@ -193,12 +197,25 @@ app.controller('PersonalController', function ($scope, Upload, $http,API){
 
 });
 
+
+
+
 app.controller('BannerController', function ($scope, Upload, $http,API,DTOptionsBuilder){
   $scope.loadData = function() {
     $http.get(API + 'getlistbanner').then(function(response){
-      $scope.banners=response.data;    
-        console.clear();
+      $scope.banners=response.data; 
+      console.clear();   
     });
+    $http.get(API + 'showbanner').then(function(response){
+     $scope.showbanner=response.data; 
+     console.clear();    
+   });
+  }
+  $scope.showbanner = function() {
+    $http.get(API + 'showbanner').then(function(response){
+     $scope.showbanner=response.data; 
+     console.clear();    
+   });
   }
   $scope.delete = function(id) {
     $http.delete(API + 'banner/' + id).then(function(response){
@@ -235,6 +252,47 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       });
     }
   };
+  $scope.editPic = function(file ,id) {
+    var url = API + 'banner/' + id;
+    if(!file)
+    {
+      var data = $scope.banner_edit;
+      $http({
+        method: 'PUT',
+        url: url,
+        data: data
+      }).then(function(response) {
+        $scope.massage_edit=response.data;
+        $scope.loadData();
+      }, function(error) {
+       console.log(error);
+     });
+    }
+    else
+    {
+      file.upload = Upload.upload({
+        url: url,
+        data: {edit_file: file ,name:$scope.banner_edit.name,
+          height:$scope.banner_edit.height,width:$scope.banner_edit.width}
+      });
+      file.upload.then(function (response) {
+        $scope.massage_edit=response.data;
+        $scope.loadData();
+      });
+    }
+  };
+  $scope.showupdate = function(id) {
+    $('#update').modal('show');
+    $http.get(API + 'banner/' + id + '/edit').then(function(response){
+     $scope.banner_edit=response.data;
+   });
+  }
+  $scope.setbanner = function(id) {
+    $http.get(API + 'setbanner/' + id).then(function(response){
+    $scope.loadData();
+   });
+  }
+
 
   $scope.dtOptions = DTOptionsBuilder.newOptions()
   .withDOM('bfltip')

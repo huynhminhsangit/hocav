@@ -17,6 +17,6 @@ return [
     'reset' => 'Mật Khẩu Đã Được Gán!',
     'sent' => 'Đã Gửi Link Lấy Lại Password Trong Email',
     'token' => 'Hết Hạn.',
-    'user' => "Không Tìm Email.",
+    'user' => "Không Tìm Thấy Email.",
 
 ];
