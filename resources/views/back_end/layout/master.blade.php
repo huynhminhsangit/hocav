@@ -69,8 +69,12 @@
           </span>
         </li>
         <li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
-          <span class="nav-link-text">Địa chỉ IP của bạn :{{Auth::user()->last_login_ip}}
-            
+          <span class="nav-link-text">Địa chỉ IP của bạn :
+            @if(!Auth::user()->last_login_ip)
+            0
+            @else
+            {{Auth::user()->last_login_ip}}
+            @endif
           </span>
         </li><li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
           <span class="nav-link-text">Lần cuối đăng nhập :

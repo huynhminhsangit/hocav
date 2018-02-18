@@ -1,9 +1,12 @@
-﻿@extends('back_end.layout.master')
-@section('title','Trang Chủ')
-@section('content')
-Đây là trang mẫu
+﻿
+</div>
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+@include('back_end.layout.head')
+<body>
 <div ng-controller="BannerController" ng-init="showbanner()">
   <img ng-src="<%'upload/banner/' + showbanner.image%>"/>
-</div>
-@endsection
-
+    @include('back_end.layout.js')
+  </body>
+  </html>
