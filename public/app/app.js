@@ -3,7 +3,7 @@ var app = angular.module('myapp', ['angularMoment','datatables', 'datatables.but
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://localhost:81/hoctienganh/public/');
+app.constant('API','http://hocav.herokuapp.com/');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
