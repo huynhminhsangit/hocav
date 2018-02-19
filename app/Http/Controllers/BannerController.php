@@ -40,7 +40,7 @@ class BannerController extends Controller
       $banner->set_up = 1;
       $banner-> save();
   }
-  public function showbanner(Request $request)
+  public function namebanner(Request $request)
   {
       return Banner::where('set_up', '=', 1)->firstOrFail();
   }

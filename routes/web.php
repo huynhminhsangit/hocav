@@ -45,4 +45,6 @@ Route::resource('banner', 'BannerController',['except'=>['create']]);
 Route::get('getlistbanner', 'BannerController@getlistbanner');
 Route::post('banner/{id}', 'BannerController@update');
 Route::get('setbanner/{id}', 'BannerController@setbanner');
-Route::get('showbanner', 'BannerController@showbanner');
+Route::get('namebanner', 'BannerController@namebanner');
+
+Route::get('showbanner', 'ShowBannerController@showbanner');

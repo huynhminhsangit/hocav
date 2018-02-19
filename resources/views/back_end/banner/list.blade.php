@@ -26,7 +26,7 @@
                 <th>Thời Gian Cập Nhật</th>
                 <th>Sửa</th>
                 <th></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger"><%showbanner.name%></div> </th>
+                <th>Hình Đang Sử Dụng:<div class="text-danger"><%namebanner.name%></div> </th>
               </tr>
             </thead>
             <tbody>

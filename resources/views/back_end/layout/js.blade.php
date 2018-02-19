@@ -28,6 +28,12 @@
       <script src="{{asset('app/lib/locale/vi.js')}}"></script>
       <script src="{{asset('app/lib/angular-moment.min.js')}}"></script>
       <script src="{{asset('app/lib/ng-file-upload.min.js')}}"></script>
-      <script src="{{asset('app/app.js')}}"></script>   
+      <script src="{{asset('app/app.js')}}"></script>
+
+       <script src="{{asset('app/controller/usercontroller.js')}}"></script> 
+       <script src="{{asset('app/controller/personalcontroller.js')}}"></script> 
+       <script src="{{asset('app/controller/historycontroller.js')}}"></script>  
+       <script src="{{asset('app/controller/bannercontroller.js')}}"></script>
+       <script src="{{asset('app/controller/showcontroller.js')}}"></script>     
 
       <script src="{{asset('back_end/js/web.js')}}"></script>

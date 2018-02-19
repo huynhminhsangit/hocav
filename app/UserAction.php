@@ -1,16 +1,6 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-
-/**
- * Class UserAction
- *
- * @package App
- * @property string $user
- * @property string $action
- * @property string $action_model
- * @property integer $action_id
-*/
 class UserAction extends Model
 {
     protected $table = 'user_actions';
