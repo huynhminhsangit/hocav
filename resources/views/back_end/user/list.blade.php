@@ -33,7 +33,7 @@
                 <td class="align-middle ng-cloak"><% user.name %></td> 
                 <td class="align-middle ng-cloak"><% user.email %></td>                  
                 <td class="align-middle ng-cloak">                   
-                  <a href="<%'avatars/' + user.avatar%>"><img ng-src="<%'avatars/' + user.avatar %>" class="rounded ng-cloak" height="100px" width="100px" ng-if="user.avatar"/></a>
+                  <a href="<%'img_avatar/' + user.avatar%>"><img ng-src="<%'img_avatar/' + user.avatar %>" class="rounded ng-cloak" height="100px" width="100px" ng-if="user.avatar"/></a>
                   <img ng-src="<%'mis/blank.png'%>" class="rounded ng-cloak" height="100px" width="100px" ng-if="!user.avatar"/>                     
                 </td>                  
                 <td class="align-middle ng-cloak"><% user.updated_at| amDateFormat:'dddd, Do MMMM  YYYY h:mm:ss'%> </td>

@@ -35,8 +35,8 @@
                 <td class="align-middle ng-cloak"><% slider.name %></td>
                 
                 <td class="align-middle ng-cloak">                  
-                  <img ng-src="<%'upload/blank.png'%>" class="rounded" height="100px" width="100px" ng-if="!slider.image"/>   
-                  <a href="<%'upload/slider/' + slider.image%>"> <img ng-src="<%'upload/slider/' + slider.image%>" class="rounded" height="100px" width="100px" ng-if="slider.image"/></a>                 
+                  <img ng-src="<%'mis/blank.png'%>" class="rounded" height="100px" width="100px" ng-if="!slider.image"/>   
+                  <a href="<%'img_slider/' + slider.image%>"> <img ng-src="<%'img_slider/' + slider.image%>" class="rounded" height="100px" width="100px" ng-if="slider.image"/></a>                 
                 </td>
                 
                 <td class="align-middle ng-cloak"> <% slider.updated_at %> </td>

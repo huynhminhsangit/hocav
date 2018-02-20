@@ -34,7 +34,7 @@
                 
                 <td class="align-middle ng-cloak">                  
                   <img ng-src="<%'mis/blank.png'%>" class="rounded" height="100px" width="100px" ng-if="!banner.image"/>   
-                  <a href="<%'banner/' + banner.image%>"> <img ng-src="<%'banner/' + banner.image%>" class="rounded" height="100px" width="100px" ng-if="banner.image"/></a>                 
+                  <a href="<%'img_banner/' + banner.image%>"> <img ng-src="<%'img_banner/' + banner.image%>" class="rounded" height="100px" width="100px" ng-if="banner.image"/></a>                 
                 </td>
                 
                 <td class="align-middle ng-cloak"> <% banner.updated_at %> </td>
