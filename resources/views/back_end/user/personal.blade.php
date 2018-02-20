@@ -58,8 +58,8 @@
           <div class="col-sm-2 text-center">
             <div class="card">
               <h5 class="card-header">Hình Ảnh</h5>    
-              <img ng-src="<%'upload/blank.png'%>" class="card-img ng-cloak" height="150px" width="250px" ng-if="!personal.avatar"/>        
-              <img ng-src="<%'upload/avatar/'+ personal.avatar%>" class="card-img ng-cloak" height="150px" width="250px" ng-if="personal.avatar"/>
+              <img ng-src="<%'mis/blank.png'%>" class="card-img ng-cloak" height="150px" width="250px" ng-if="!personal.avatar"/>        
+              <img ng-src="<%'img_avatar/'+ personal.avatar%>" class="card-img ng-cloak" height="150px" width="250px" ng-if="personal.avatar"/>
             </div>
           </div>
         </div>
