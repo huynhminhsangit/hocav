@@ -30,7 +30,7 @@ class BannerController extends Controller
     $banner = Banner::find($id);
   
     Banner::destroy($id);
-    File::delete(public_path('upload/banner/'.$banner->image));
+    File::delete(public_path('img_banner/'.$banner->image));
   }
   public function setbanner($id)
   {
@@ -60,7 +60,7 @@ class BannerController extends Controller
       $banner->name = $request->banner_name_add;
       $banner->set_up = 0;
       $banner->image = $filename;     
-      Image::make($image)->resize(2000, 400)->save('upload/banner/'.$filename);
+      Image::make($image)->resize(2000, 400)->save('img_banner/'.$filename);
 
       $banner-> save();
       return response()->json(['success' => 'Thêm Thành Công']);
@@ -78,11 +78,11 @@ class BannerController extends Controller
     {        
       $image = $request->file('edit_file');
       $filename  = time() . '.' . $image->getClientOriginalExtension();
-      File::delete(public_path('upload/banner/'.$banner->image));
+      File::delete(public_path('img_banner/'.$banner->image));
       $banner->name = $request->name;
       $banner->set_up = 0;
       $banner->image = $filename;                       
-      Image::make($image)->resize(2000, 400)->save(public_path('upload/banner/'.$filename));
+      Image::make($image)->resize(2000, 400)->save(public_path('img_banner/'.$filename));
 
       $banner-> save();
       return response()->json(['success' => 'Sửa Thành Công']); 

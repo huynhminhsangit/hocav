@@ -75,7 +75,7 @@
             <div class="pageContent">
 
                 <div class="page-title title-1">
-                    <img ng-src="<%'upload/banner/' + showbanner.image%>"/>
+                    <img ng-src="<%'img_banner/' + showbanner.image%>"/>
                 </div>
                 <!---Signin star-->
                 <div id="block-right" data-status="0">
@@ -102,13 +102,13 @@
 
                                     <div class="shop-ads-top">
                                         <div>
-                                            <img ng-src="<%'upload/slider/' + showslider1.image%>"/>
+                                            <img ng-src="<%'img_slider/' + showslider1.image%>"/>
                                         </div>
                                         <div>
-                                            <img ng-src="<%'upload/slider/' + showslider2.image%>"/>
+                                            <img ng-src="<%'img_slider/' + showslider2.image%>"/>
                                         </div>
                                         <div>
-                                            <img ng-src="<%'upload/slider/' + showslider3.image%>"/>
+                                            <img ng-src="<%'img_slider/' + showslider3.image%>"/>
                                         </div>
                                     </div>
 

@@ -47,8 +47,8 @@ class PersonalController extends Controller
             {           
                 $image = $request->file('file');
                 $filename  = time() . '.' . $image->getClientOriginalExtension();
-                File::delete(public_path('upload/avatar/'.$users->avatar));                   
-                Image::make($image)->resize(500, 500)->save('upload/avatar/'.$filename);
+                File::delete(public_path('img_avatar/'.$users->avatar));                   
+                Image::make($image)->resize(500, 500)->save('img_avatar/'.$filename);
                 $users->avatar = $filename;
                 $users->name = $request->name;
                 $users->email = $request->email;                          

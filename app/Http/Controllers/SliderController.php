@@ -27,7 +27,7 @@ class SliderController extends Controller
     $slider = Slider::find($id);
 
     Slider::destroy($id);
-    File::delete(public_path('upload/slider/'.$slider->image));
+    File::delete(public_path('img_slider/'.$slider->image));
   }
   public function store(Request $request)
   {
@@ -38,7 +38,7 @@ class SliderController extends Controller
       $slider->name = $request->slider_name_add;
       $slider->set_up = 0;
       $slider->image = $filename;     
-      Image::make($image)->resize(1000, 260)->save('upload/slider/'.$filename);
+      Image::make($image)->resize(1000, 260)->save('img_slider/'.$filename);
 
       $slider-> save();
       return response()->json(['success' => 'Thêm Thành Công']);
@@ -56,11 +56,11 @@ class SliderController extends Controller
     {        
       $image = $request->file('edit_file');
       $filename  = time() . '.' . $image->getClientOriginalExtension();
-      File::delete(public_path('upload/slider/'.$slider->image));
+      File::delete(public_path('img_slider/'.$slider->image));
       $slider->name = $request->name;
       $slider->set_up = 0;
       $slider->image = $filename;                       
-      Image::make($image)->resize(1000, 260)->save(public_path('upload/slider/'.$filename));
+      Image::make($image)->resize(1000, 260)->save(public_path('img_slider/'.$filename));
 
       $slider-> save();
       return response()->json(['success' => 'Sửa Thành Công']); 
