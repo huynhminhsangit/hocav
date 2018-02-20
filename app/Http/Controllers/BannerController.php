@@ -60,7 +60,7 @@ class BannerController extends Controller
       $banner->name = $request->banner_name_add;
       $banner->set_up = 0;
       $banner->image = $filename;     
-      Image::make($image)->resize(1500, 600)->save('img_banner/'.$filename);
+      Image::make($image)->resize(2000, 400)->save('img_banner/'.$filename);
 
       $banner-> save();
       return response()->json(['success' => 'Thêm Thành Công']);
@@ -82,7 +82,7 @@ class BannerController extends Controller
       $banner->name = $request->name;
       $banner->set_up = 0;
       $banner->image = $filename;                       
-      Image::make($image)->resize(1500, 600)->save(public_path('img_banner/'.$filename));
+      Image::make($image)->resize(2000, 400)->save(public_path('img_banner/'.$filename));
 
       $banner-> save();
       return response()->json(['success' => 'Sửa Thành Công']); 
