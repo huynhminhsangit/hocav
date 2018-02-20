@@ -94,7 +94,7 @@
 
                     </ul>
                 </div>
-                <div class="section parallax padding-vertical-60" style="background-image:url('upload/dark-space-desktop-background.jpg')" data-stellar-background-ratio="0.4">
+                <div class="section parallax padding-vertical-60" style="background-image:url('mis/dark-space-desktop-background.jpg')" data-stellar-background-ratio="0.4">
                     <div class="section">
                         <div class="container">
                             <div class="row">
