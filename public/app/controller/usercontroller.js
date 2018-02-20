@@ -19,7 +19,7 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
     ]);
   $scope.loadData = function() {
     $http.get(API + 'getlistuser').then(function(response){
-     $scope.users=response.data;
+     $scope.user=response.data;
      console.clear();
    });
   }

@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Banner;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Image;
+use File;
 class BannerController extends Controller
 {
   public function __construct()
   {
     $this->middleware('auth');
-    $this->middleware('phuong');
   }
   public function getlistbanner()
   {   
@@ -26,35 +26,41 @@ class BannerController extends Controller
   } 
   public function destroy(Request $request,$id)
   {
-    $banner = Banner::find($id);
-    
 
+    $banner = Banner::find($id);
+  
     Banner::destroy($id);
-    Storage::disk('public1')->delete('banner/'.$banner->image); 
+    File::delete(public_path('upload/banner/'.$banner->image));
   }
   public function setbanner($id)
   {
-      Banner::where('set_up', '=', 1)->update(['set_up' => 0]);
+    Banner::where('set_up', '=', 1)->update(['set_up' => 0]);
 
-      $banner = Banner::findorfail($id);
-      $banner->set_up = 1;
-      $banner-> save();
+    $banner = Banner::findorfail($id);
+    $banner->set_up = 1;
+    $banner-> save();
   }
-  public function namebanner(Request $request)
+  public function namebanner()
   {
-      return Banner::where('set_up', '=', 1)->firstOrFail();
+    if(Banner::where('set_up', '=', 1))
+      {
+        return Banner::where('set_up', '=', 1)->firstOrFail();
+      }
+      else
+      {
+        return response()->json(['name' => 'Trùng']);
+      }
   }
   public function store(Request $request)
   {
+    $image = $request->file('file');
+    $filename  = time() . '.' . $image->getClientOriginalExtension();
     try{
       $banner = new Banner;
-      
       $banner->name = $request->banner_name_add;
-      $banner->height = $request->banner_height_add;
       $banner->set_up = 0;
-      $banner->width = $request->banner_width_add;
-      $bannername = $request->file('file')->store('banner', 'public1');
-      $banner->image = basename($bannername);
+      $banner->image = $filename;     
+      Image::make($image)->resize(2000, 400)->save('upload/banner/'.$filename);
 
       $banner-> save();
       return response()->json(['success' => 'Thêm Thành Công']);
@@ -67,15 +73,16 @@ class BannerController extends Controller
  public function update($id,Request $request){
   try{
     $banner = Banner::findorfail($id);
+
     if($request->hasFile('edit_file'))
     {        
-      Storage::disk('public1')->delete('banner/'.$banner->image);  
+      $image = $request->file('edit_file');
+      $filename  = time() . '.' . $image->getClientOriginalExtension();
+      File::delete(public_path('upload/banner/'.$banner->image));
       $banner->name = $request->name;
-      $banner->height = $request->height;
-      $banner->width = $request->width;
-      $banner->set_up = 0;                      
-      $bannername = $request->file('edit_file')->store('banner', 'public1');
-      $banner->image = basename($bannername);
+      $banner->set_up = 0;
+      $banner->image = $filename;                       
+      Image::make($image)->resize(2000, 400)->save(public_path('upload/banner/'.$filename));
 
       $banner-> save();
       return response()->json(['success' => 'Sửa Thành Công']); 
@@ -83,8 +90,6 @@ class BannerController extends Controller
     else
     {
      $banner->name = $request->name;
-     $banner->height = $request->height;
-     $banner->width = $request->width;
      $banner->set_up = 0;
      $banner-> save();
      return response()->json(['success' => 'Sửa Thành Công']);

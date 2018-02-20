@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+use Image;
+use File;
 class PersonalController extends Controller
 {
     public function __construct()
@@ -44,16 +45,18 @@ class PersonalController extends Controller
 
             if($request->hasFile('file'))
             {           
-                Storage::disk('public1')->delete('avatars/'.$users->avatar);                     
-                $avatarname = $request->file('file')->store('avatars', 'public1');
-                $users->avatar = basename($avatarname);
+                $image = $request->file('file');
+                $filename  = time() . '.' . $image->getClientOriginalExtension();
+                File::delete(public_path('upload/avatar/'.$users->avatar));                   
+                Image::make($image)->resize(500, 500)->save('upload/avatar/'.$filename);
+                $users->avatar = $filename;
                 $users->name = $request->name;
                 $users->email = $request->email;                          
                 $users-> save();
                 return response()->json(['success' => 'Cập Nhật Thành Công']);          
             }
             else
-            $users->name = $request->name;
+                $users->name = $request->name;
             $users->email = $request->email;
             $users-> save();
             return response()->json(['error' => 'Cập Nhật Thành Công']);

@@ -1,4 +1,4 @@
-var app = angular.module('myapp', ['angularMoment','datatables', 'datatables.buttons','ngFileUpload'], function($interpolateProvider,$compileProvider) {
+var app = angular.module('back', ['angularMoment','datatables', 'datatables.buttons','ngFileUpload'], function($interpolateProvider,$compileProvider) {
 	$interpolateProvider.startSymbol('<%');
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);

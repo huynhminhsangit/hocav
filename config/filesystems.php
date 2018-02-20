@@ -62,11 +62,6 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
-        'public1' => [
-            'driver'     => 'local',
-            'root'       => 'upload',
-            'visibility' => 'public',
-        ],
 
     ],
 

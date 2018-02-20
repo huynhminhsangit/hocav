@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myapp">
+<html lang="en" ng-app="back">
 @include('back_end.layout.head')
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
@@ -32,7 +32,7 @@
               <a href="{{ url('banner') }}">Banner</a>
             </li>
             <li>
-              <a href="{{ url('user') }}">Slider</a>
+              <a href="{{ url('slider') }}">Slider</a>
             </li>
             <li>
               <a href="{{ url('user') }}">Menu</a>
@@ -99,7 +99,7 @@
         <li class="nav-item">          
           <img ng-src="{{ url('upload/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
           @else
-          <img ng-src="{{ url('upload/avatars/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
+          <img ng-src="{{ url('upload/avatar/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
         </li>
         @endif
         <li class="nav-item">

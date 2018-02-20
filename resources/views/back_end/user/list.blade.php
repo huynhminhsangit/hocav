@@ -28,7 +28,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat = "user in users">
+              <tr ng-repeat = "user in user">
                 <td class="align-middle ng-cloak"><% user.id %> </td>
                 <td class="align-middle ng-cloak"><% user.name %></td> 
                 <td class="align-middle ng-cloak"><% user.email %></td>                  

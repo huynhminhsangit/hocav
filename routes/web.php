@@ -47,4 +47,18 @@ Route::post('banner/{id}', 'BannerController@update');
 Route::get('setbanner/{id}', 'BannerController@setbanner');
 Route::get('namebanner', 'BannerController@namebanner');
 
-Route::get('showbanner', 'ShowBannerController@showbanner');
+Route::resource('slider', 'SliderController',['except'=>['create']]);
+Route::get('getlistslider', 'SliderController@getlistslider');
+Route::post('slider/{id}', 'SliderController@update');
+Route::get('setslider1/{id}', 'SliderController@setslider1');
+Route::get('setslider2/{id}', 'SliderController@setslider2');
+Route::get('setslider3/{id}', 'SliderController@setslider3');
+Route::get('nameslider1', 'SliderController@nameslider1');
+Route::get('nameslider2', 'SliderController@nameslider2');
+Route::get('nameslider3', 'SliderController@nameslider3');
+
+
+Route::get('showbanner', 'ShowController@showbanner');
+Route::get('showslider1', 'ShowController@showslider1');
+Route::get('showslider2', 'ShowController@showslider2');
+Route::get('showslider3', 'ShowController@showslider3');

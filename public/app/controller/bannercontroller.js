@@ -1,18 +1,13 @@
 app.controller('BannerController', function ($scope, Upload, $http,API,DTOptionsBuilder){
   $scope.loadData = function() {
     $http.get(API + 'getlistbanner').then(function(response){
-      $scope.banners=response.data; 
+      $scope.banner=response.data; 
       console.clear();   
     });
-    $http.get(API + 'namebanner').then(function(response){
-      if(!response)
-      {
-        $scope.namebanner='Ko';
-      }
-      else
-     $scope.namebanner=response.data; 
-     console.clear();    
-   });
+      $http.get(API + 'namebanner').then(function(response){
+        $scope.namebanner=response.data; 
+        console.clear();       
+   });    
   }
   $scope.delete = function(id) {
     $http.delete(API + 'banner/' + id).then(function(response){
@@ -39,9 +34,7 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
     {
       file.upload = Upload.upload({
         url: url,
-        data: {file: file ,banner_name_add:$scope.banner_add.banner_name_add,
-          banner_height_add:$scope.banner_add.banner_height_add
-          ,banner_width_add:$scope.banner_add.banner_width_add}
+        data: {file: file ,banner_name_add:$scope.banner_add.banner_name_add}
         });
       file.upload.then(function (response) {
         $scope.massage=response.data;
@@ -69,8 +62,7 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
     {
       file.upload = Upload.upload({
         url: url,
-        data: {edit_file: file ,name:$scope.banner_edit.name,
-          height:$scope.banner_edit.height,width:$scope.banner_edit.width}
+        data: {edit_file: file ,name:$scope.banner_edit.name}
         });
       file.upload.then(function (response) {
         $scope.massage_edit=response.data;

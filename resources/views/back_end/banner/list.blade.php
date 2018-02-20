@@ -20,23 +20,19 @@
               <tr>
                 <th>ID</th>
                 <th>Tên</th>
-                <th>Chiều Cao</th>
-                <th>Chiều Rộng</th>
                 <th>Hình Ảnh</th>
                 <th>Thời Gian Cập Nhật</th>
                 <th>Sửa</th>
                 <th></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger"><%namebanner.name%></div> </th>
+                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak"><%namebanner.name%></div></th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="banner in banners">
+              <tr ng-repeat="banner in banner">
                 <td class="align-middle ng-cloak"><% banner.id %> </td>
                 <td class="align-middle ng-cloak"><% banner.name %></td>
-                <td class="align-middle ng-cloak"><% banner.height %></td>
-                <td class="align-middle ng-cloak"><% banner.width %></td>
                 
-                <td>                  
+                <td class="align-middle ng-cloak">                  
                   <img ng-src="<%'upload/blank.png'%>" class="rounded" height="100px" width="100px" ng-if="!banner.image"/>   
                   <a href="<%'upload/banner/' + banner.image%>"> <img ng-src="<%'upload/banner/' + banner.image%>" class="rounded" height="100px" width="100px" ng-if="banner.image"/></a>                 
                 </td>
@@ -68,26 +64,6 @@
                   <input type="text" class="form-control" name="banner_name_add" ng-model="banner_add.banner_name_add" ng-required="true" autocomplete="off">
                   <div ng-show="frmadd.banner_name_add.$dirty && frmadd.banner_name_add.$invalid">
                     <span class="help-block text-danger" ng-show="frmadd.banner_name_add.$error.required">Không Được Trống</span>
-                  </div>
-                </div>             
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-3">Chiều Cao:</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control"  name="banner_height_add" ng-model="banner_add.banner_height_add" ng-required="true" autocomplete="off" ng-pattern="/^[0-9]*$/">
-                  <div ng-show="frmadd.banner_height_add.$dirty && frmadd.banner_height_add.$invalid">
-                    <span class="help-block text-danger" ng-show="frmadd.banner_height_add.$error.required">Không Được Trống</span>
-                    <span class="help-block text-danger" ng-show="frmadd.banner_height_add.$error.pattern">Chỉ Nhập Số</span>
-                  </div>
-                </div>             
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-3">Chiều Rộng:</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="banner_width_add" ng-model="banner_add.banner_width_add" ng-required="true" autocomplete="off" ng-pattern="/^[0-9]*$/">
-                  <div ng-show="frmadd.banner_width_add.$dirty && frmadd.banner_width_add.$invalid">
-                    <span class="help-block text-danger" ng-show="frmadd.banner_width_add.$error.required">Không Được Trống</span>
-                    <span class="help-block text-danger" ng-show="frmadd.banner_height_add.$error.pattern">Chỉ Nhập Số</span>
                   </div>
                 </div>             
               </div>
@@ -141,26 +117,6 @@
                   <input type="text" class="form-control" name="banner_name_edit" ng-model="banner_edit.name" ng-required="true" autocomplete="off">
                   <div ng-show="frmedit.banner_name_edit.$dirty && frmedit.banner_name_edit.$invalid">
                     <span class="help-block text-danger" ng-show="frmedit.banner_name_edit.$error.required">Không Được Trống</span>
-                  </div>
-                </div>             
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-3">Chiều Cao:</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control"  name="banner_height_edit" ng-model="banner_edit.height" ng-required="true" autocomplete="off" ng-pattern="/^[0-9]*$/">
-                  <div ng-show="frmedit.banner_height_edit.$dirty && frmedit.banner_height_edit.$invalid">
-                    <span class="help-block text-danger" ng-show="frmedit.banner_height_edit.$error.required">Không Được Trống</span>
-                    <span class="help-block text-danger" ng-show="frmedit.banner_height_edit.$error.pattern">Chỉ Nhập Số</span>
-                  </div>
-                </div>             
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-3">Chiều Rộng:</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="banner_width_edit" ng-model="banner_edit.width" ng-required="true" autocomplete="off" ng-pattern="/^[0-9]*$/">
-                  <div ng-show="frmedit.banner_width_edit.$dirty && frmedit.banner_width_edit.$invalid">
-                    <span class="help-block text-danger" ng-show="frmedit.banner_width_edit.$error.required">Không Được Trống</span>
-                    <span class="help-block text-danger" ng-show="frmedit.banner_width_edit.$error.pattern">Chỉ Nhập Số</span>
                   </div>
                 </div>             
               </div>
