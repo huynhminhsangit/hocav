@@ -7,7 +7,7 @@
             <div class="container">
                 <!-- Logo start -->
                 <div class="logo">
-                    <a href="index.html"><img alt="" ng-src="<%'logo/28233630_665168426986999_1964720865_n.jpg'%>" /></a>
+                    <a href="index.html"><img alt="" ng-src="<%'logo/28380983_665169946986847_2022095945_n.jpg'%>" /></a>
                 </div>
                 <!-- Logo end -->
 
