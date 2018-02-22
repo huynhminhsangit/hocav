@@ -42,7 +42,7 @@ return [
     'facebook'   => [
         'client_id'     => '273065589864224',
         'client_secret' => '2e41fd83aa97613f6c42e89ae9203f93',
-        'redirect'      => 'https://avhiepgays.tk/public/auth/facebook/callback',
+        'redirect'      => 'https://avhiepgays.tk/auth/facebook/callback',
     ],
 
 ];
