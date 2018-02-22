@@ -5,8 +5,7 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       console.clear();   
     });
       $http.get(API + 'namebanner').then(function(response){
-        $scope.namebanner=response.data; 
-        console.clear();       
+        $scope.namebanner=response.data;     
    });    
   }
   $scope.delete = function(id) {
@@ -66,7 +65,7 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
         });
       file.upload.then(function (response) {
         $scope.massage_edit=response.data;
-        $scope.loadData();
+        $scope.setbanner(id);
       });
     }
   };

@@ -35,6 +35,6 @@
        <script src="{{asset('app/controller/historycontroller.js')}}"></script>  
        <script src="{{asset('app/controller/bannercontroller.js')}}"></script>
        <script src="{{asset('app/controller/slidercontroller.js')}}"></script>
-       <script src="{{asset('app/controller/showcontroller.js')}}"></script>     
+       <script src="{{asset('app/controller/clientcontroller.js')}}"></script>      
 
       <script src="{{asset('back_end/js/web.js')}}"></script>

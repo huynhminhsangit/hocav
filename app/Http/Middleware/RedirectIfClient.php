@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Role
+class RedirectIfClient
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,11 @@ class Role
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->can('phuong')) {
-          return $next($request);
+        if (Auth::guard('client')->check()) {
+           
+            return $next($request);
         }
-        
-        return redirect()->back()->with('message1', 'Bạn Không Có Quyền');  
+
+         return redirect('/');
     }
 }

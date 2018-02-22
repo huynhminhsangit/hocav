@@ -28,6 +28,9 @@ Route::get('/', 'HomeController@index');
 Route::resource('user', 'UserController',['except'=>['create','show']]);
 Route::get('getlistuser', 'UserController@getlistuser');
 
+Route::resource('client', 'ClientController',['except'=>['create','show']]);
+Route::get('getlistclient', 'ClientController@getlistclient');
+
 Route::resource('history', 'HistoryController',['except'=>['destroy','create','show']]);
 Route::get('getlisthistory', 'HistoryController@getlisthistory');
 Route::post('del', 'HistoryController@destroy');
@@ -62,3 +65,13 @@ Route::get('showbanner', 'ShowController@showbanner');
 Route::get('showslider1', 'ShowController@showslider1');
 Route::get('showslider2', 'ShowController@showslider2');
 Route::get('showslider3', 'ShowController@showslider3');
+
+
+
+Route::get('auth/google', 'AuthController@redirectgoogle');
+Route::get('auth/google/callback', 'AuthController@handlegoogle');
+Route::get('auth/facebook', 'AuthController@redirectfacebook');
+Route::get('auth/facebook/callback', 'AuthController@handlefacebook');
+Route::post('aulogoutth/client', 'AuthController@logout')->name('logout_client');
+
+Route::get('gay', 'GayController@gay');

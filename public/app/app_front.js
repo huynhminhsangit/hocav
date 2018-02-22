@@ -3,7 +3,7 @@ var app = angular.module('front', [], function($interpolateProvider,$compileProv
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://hocav.herokuapp.com/');
+app.constant('API','http://localhost:81/hoctienganh/public/');
 
 
 

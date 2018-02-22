@@ -28,13 +28,13 @@ class BannerController extends Controller
   {
 
     $banner = Banner::find($id);
-  
+
     Banner::destroy($id);
     File::delete(public_path('img_banner/'.$banner->image));
   }
   public function setbanner($id)
   {
-    Banner::where('set_up', '=', 1)->update(['set_up' => 0]);
+    Banner::where('set_up', 1)->update(['set_up' => 0]);
 
     $banner = Banner::findorfail($id);
     $banner->set_up = 1;
@@ -42,35 +42,34 @@ class BannerController extends Controller
   }
   public function namebanner()
   {
-    if(Banner::where('set_up', '=', 1))
-      {
-        return Banner::where('set_up', '=', 1)->firstOrFail();
-      }
-      else
-      {
-        return response()->json(['name' => 'Trùng']);
-      }
-  }
-  public function store(Request $request)
-  {
-    $image = $request->file('file');
-    $filename  = time() . '.' . $image->getClientOriginalExtension();
     try{
-      $banner = new Banner;
-      $banner->name = $request->banner_name_add;
-      $banner->set_up = 0;
-      $banner->image = $filename;     
-      Image::make($image)->resize(2000, 400)->save('img_banner/'.$filename);
-
-      $banner-> save();
-      return response()->json(['success' => 'Thêm Thành Công']);
+      return Banner::where('set_up',1)->firstOrFail();
     } 
     catch(\Exception $e) {
-     return response()->json(['error' => 'Trùng']);
+      return response()->json(['error' => 'Không Có']);
    } 
 
  }
- public function update($id,Request $request){
+ public function store(Request $request)
+ {
+  $image = $request->file('file');
+  $filename  = time() . '.' . $image->getClientOriginalExtension();
+  try{
+    $banner = new Banner;
+    $banner->name = $request->banner_name_add;
+    $banner->set_up = 0;
+    $banner->image = $filename;     
+    Image::make($image)->resize(2000, 400)->save('img_banner/'.$filename);
+
+    $banner-> save();
+    return response()->json(['success' => 'Thêm Thành Công']);
+  } 
+  catch(\Exception $e) {
+   return response()->json(['error' => 'Trùng']);
+ } 
+
+}
+public function update($id,Request $request){
   try{
     $banner = Banner::findorfail($id);
 

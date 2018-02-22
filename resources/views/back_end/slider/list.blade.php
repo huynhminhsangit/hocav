@@ -24,9 +24,9 @@
                 <th>Thời Gian Cập Nhật</th>
                 <th>Sửa</th>
                 <th></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak"><% nameslider1.name %></div></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak"><% nameslider2.name %></div></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak"><% nameslider3.name %></div></th>
+                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak" ng-if="nameslider1.name"><% nameslider1.name %></div> <div class="text-danger ng-cloak" ng-if="nameslider1.error"><% nameslider1.error %></div></th>
+                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak" ng-if="nameslider2.name"><% nameslider2.name %></div> <div class="text-danger ng-cloak" ng-if="nameslider2.error"><% nameslider2.error %></div></th>
+                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak" ng-if="nameslider3.name"><% nameslider3.name %></div> <div class="text-danger ng-cloak" ng-if="nameslider3.error"><% nameslider3.error %></div></th>
               </tr>
             </thead>
             <tbody>

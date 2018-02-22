@@ -24,7 +24,10 @@
                 <th>Thời Gian Cập Nhật</th>
                 <th>Sửa</th>
                 <th></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak"><%namebanner.name%></div></th>
+                <th>Hình Đang Sử Dụng:
+                  <div class="text-danger ng-cloak" ng-if="namebanner.name" ><%namebanner.name%></div>
+                  <div class="text-danger ng-cloak" ng-if="namebanner.error" ><%namebanner.error%></div>
+                </th>
               </tr>
             </thead>
             <tbody>

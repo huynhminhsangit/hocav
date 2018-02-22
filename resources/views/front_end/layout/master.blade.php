@@ -1,13 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="front">
 @include('front_end.layout.head')
-<body ng-controller="ShowController">
+<body>
     <div class="pageWrapper animsition">
         <header class="top-head header-5" data-sticky="true">
             <div class="container">
                 <!-- Logo start -->
                 <div class="logo">
-                    <a href="index.html"><img alt="" src="assets/images/logo.png" /></a>
+                    <a href="index.html"><img alt="" ng-src="<%'logo/28380983_665169946986847_2022095945_n.jpg'%>" /></a>
                 </div>
                 <!-- Logo end -->
 
@@ -69,34 +69,9 @@
                 </div>
             </div>
         </header>
-
-        <div id="contentWrapper">
-
-            <div class="pageContent">
-
-                <div class="page-title title-1">
-                    <img ng-src="<%'upload/banner/RRUVksF8gsaiUUefZzZjG2JusKYiKYNBoG9truwV.jpeg'%>"/>
-                </div>
-                <!---Signin star-->
-                <div id="block-right" data-status="0">
-                    <ul id="right-side-bar" class="nav">
-                        <li class="col-xs-12 text-center dark">
-                            <a title="wse" href="#">
-                                <span class="fa fa-users"></span><br>Đăng ký
-                            </a>
-                        </li>
-
-                        <li class="col-xs-12 text-center dark">
-                            <a title="wse" href="#">
-                                <span class="fa fa-hand-o-right"></span><br>Đăng nhập
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-                <div>
-                    @yield('content')
-                </div>
+        <div ng-controller="ShowController">
+            @yield('content')
+        </div>
         <footer id="footWrapper">
 
             <div class="footer-middle">
@@ -157,10 +132,7 @@
                 </div>
             </div>
         </footer>
-
-    </div>
-</div>
-<a id="to-top"><span class="fa fa-chevron-up shape main-bg"></span></a>
-@include('front_end.layout.js')
-</body>
-</html>
+        <a id="to-top"><span class="fa fa-chevron-up shape main-bg"></span></a>
+        @include('front_end.layout.js')
+    </body>
+    </html>

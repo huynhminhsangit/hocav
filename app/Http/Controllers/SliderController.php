@@ -82,39 +82,54 @@ public function edit($id){
   return Slider::findorfail($id);
 }
 public function setslider1($id)
-  {
-    Slider::where('set_up', '=', 1)->update(['set_up' => 0]);
+{
+  Slider::where('set_up', '=', 1)->update(['set_up' => 0]);
 
-    $slider = Slider::findorfail($id);
-    $slider->set_up = 1;
-    $slider-> save();
+  $slider = Slider::findorfail($id);
+  $slider->set_up = 1;
+  $slider-> save();
+} 
+public function setslider2($id)
+{
+  Slider::where('set_up', '=', 2)->update(['set_up' => 0]);
+
+  $slider = Slider::findorfail($id);
+  $slider->set_up = 2;
+  $slider-> save();
+} 
+public function setslider3($id)
+{
+  Slider::where('set_up', '=', 3)->update(['set_up' => 0]);
+
+  $slider = Slider::findorfail($id);
+  $slider->set_up = 3;
+  $slider-> save();
+}
+public function nameslider1()
+{
+  try{
+    return Slider::where('set_up', 1)->firstOrFail();
   } 
-  public function setslider2($id)
-  {
-    Slider::where('set_up', '=', 2)->update(['set_up' => 0]);
-
-    $slider = Slider::findorfail($id);
-    $slider->set_up = 2;
-    $slider-> save();
+  catch(\Exception $e) {
+    return response()->json(['error' => 'Không Có']);
   } 
-  public function setslider3($id)
-  {
-    Slider::where('set_up', '=', 3)->update(['set_up' => 0]);
-
-    $slider = Slider::findorfail($id);
-    $slider->set_up = 3;
-    $slider-> save();
-  }
-  public function nameslider1()
-  {
-        return Slider::where('set_up', '=', 1)->firstOrFail();
-  }
-  public function nameslider2()
-  {
-        return Slider::where('set_up', '=', 2)->firstOrFail();
-  }
-  public function nameslider3()
-  {
-        return Slider::where('set_up', '=', 3)->firstOrFail();
-  }  
+}
+public function nameslider2()
+{
+  try{
+    return Slider::where('set_up', 2)->firstOrFail();
+  } 
+  catch(\Exception $e) {
+    return response()->json(['error' => 'Không Có']);
+  } 
+}
+public function nameslider3()
+{
+  try{
+    return Slider::where('set_up', 3)->firstOrFail();
+  } 
+  catch(\Exception $e) {
+    return response()->json(['error' => 'Không Có']);
+  } 
+}  
 }

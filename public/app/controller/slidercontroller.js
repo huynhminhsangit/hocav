@@ -27,16 +27,13 @@ app.controller('SliderController', function ($scope, Upload, $http,API,DTOptions
       console.clear();   
     });
     $http.get(API + 'nameslider1').then(function(response){
-      $scope.nameslider1=response.data; 
-      console.clear();     
+      $scope.nameslider1=response.data;   
     }); 
     $http.get(API + 'nameslider2').then(function(response){
-      $scope.nameslider2=response.data; 
-      console.clear();     
+      $scope.nameslider2=response.data;    
     });  
     $http.get(API + 'nameslider3').then(function(response){
-      $scope.nameslider3=response.data; 
-      console.clear();     
+      $scope.nameslider3=response.data;  
     }); 
   }
 
@@ -92,7 +89,9 @@ app.controller('SliderController', function ($scope, Upload, $http,API,DTOptions
         });
         file.upload.then(function (response) {
           $scope.massage_edit=response.data;
-          $scope.loadData();
+          $scope.setslider1(id);
+          $scope.setslider2(id);
+          $scope.setslider3(id);
         });
       }
     };

@@ -48,6 +48,9 @@
             <li>
               <a href="{{ url('user') }}">Người Dùng</a>
             </li>
+            <li>
+              <a href="{{ url('client') }}">Khách</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
@@ -67,25 +70,7 @@
           <span class="nav-link-text">
 
           </span>
-        </li>
-        <li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
-          <span class="nav-link-text">Địa chỉ IP của bạn :
-            @if(!Auth::user()->last_login_ip)
-            0
-            @else
-            {{Auth::user()->last_login_ip}}
-            @endif
-          </span>
-        </li><li class="nav-item text-warning" data-toggle="tooltip" data-placement="right">
-          <span class="nav-link-text">Lần cuối đăng nhập :
-            @if(!Auth::user()->last_login_at)
-            0
-            @else
-            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', Auth::user()->last_login_at)->diffForHumans() }}
-            @endif
-          </span>
-        </li>
-        
+        </li>        
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
