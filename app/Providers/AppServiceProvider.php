@@ -18,10 +18,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::setLocale('vi');
         Schema::defaultStringLength(191);
-        if(env('REDIRECT_HTTPS'))
-  {
-    $url->forceSchema('https');
-  }
+        if(env('APP_ENV') == 'production') {
+            URL::forceScheme('https');
+        }
     }
 
     /**
