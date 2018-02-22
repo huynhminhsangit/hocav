@@ -37,12 +37,12 @@ return [
     'google'   => [
         'client_id'     => '109200403701-vsgk1h4dua8l4q85gp6ieqgi43ebk2fb.apps.googleusercontent.com',
         'client_secret' => 'nZi3auTWte-ZkUA3hCFArnV3',
-        'redirect'      => 'http://localhost:81/hoctienganh/public/auth/google/callback',
+        'redirect'      => 'https://avhiepgays.tk/auth/google/callback',
     ],
     'facebook'   => [
         'client_id'     => '273065589864224',
         'client_secret' => '2e41fd83aa97613f6c42e89ae9203f93',
-        'redirect'      => 'http://localhost:81/hoctienganh/public/auth/facebook/callback',
+        'redirect'      => 'https://avhiepgays.tk/public/auth/facebook/callback',
     ],
 
 ];

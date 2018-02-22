@@ -3,7 +3,7 @@ var app = angular.module('back', ['angularMoment','datatables', 'datatables.butt
 	$interpolateProvider.endSymbol('%>');
   $compileProvider.debugInfoEnabled(false);
 });
-app.constant('API','http://localhost:81/hoctienganh/public/');
+app.constant('API','https://avhiepgays.tk/');
 app.run(function(amMoment) {
 	amMoment.changeLocale('vi');
 });
