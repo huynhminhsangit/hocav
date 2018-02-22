@@ -43,7 +43,25 @@ class AuthController extends Controller
     public function handlefacebook() {
         // Get github's user infomation
         $user = Socialite::driver('facebook')->user();
-        return $user->getName();
+        if(Auth::guard('client')->attempt(['id_auth' => $user->getId(),'password' => '']))
+            {
+                Auth::guard('client')->login();
+
+               return redirect('/'); 
+           }
+           else
+           {
+            $createdclient = Client::firstOrCreate([
+                'name' => $user->getName(),
+                'email' => $user->getEmail(),
+                'avatar' => $user->getAvatar(),
+                'id_auth' => $user->getId(),
+            ]);
+
+            Auth::guard('client')->login($createdclient);
+
+            return redirect('/');
+        }
     }
     public function logout(Request $request)
     {

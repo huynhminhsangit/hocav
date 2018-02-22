@@ -5,14 +5,10 @@
     <div class="pageWrapper animsition">
         <header class="top-head header-5" data-sticky="true">
             <div class="container">
-                <!-- Logo start -->
                 <div class="logo">
                     <a href="index.html"><img alt="" ng-src="<%'logo/28380983_665169946986847_2022095945_n.jpg'%>" /></a>
                 </div>
-                <!-- Logo end -->
-
                 <div class="f-right responsive-nav">
-                    <!-- top navigation menu start -->
                     <nav class="top-nav nav-animate to-bottom">
                         <ul>
                             <li class="mega-menu"><a href="#">Trang chủ</a></li>
@@ -52,20 +48,14 @@
 
                         </ul>
                     </nav>
-                    <!-- top navigation menu end -->
-
                     <div class="f-right">
-                        <!-- top search start -->
                         <div class="top-search">
                             <a href="#" class="main-bg shape sm"><span class="fa fa-search"></span></a>
                             <div class="search-box">
                                 <input type="text" name="t" placeholder="Type And Hit Enter...">
                             </div>
                         </div>
-                        <!-- top search end -->
-
                     </div>
-
                 </div>
             </div>
         </header>

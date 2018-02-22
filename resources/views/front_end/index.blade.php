@@ -3,30 +3,32 @@
 <div class="page-title title-1">
     <img ng-src="<%'img_banner/' + showbanner.image%>" ng-if="showbanner.image"/>
 </div>
-<!---Signin star-->
 <div id="block-right" data-status="0">
+    @if(Auth::guard('client')->user())
     <ul id="right-side-bar" class="nav">
         <li class="col-xs-12 text-center dark">
-            Đăng Nhập
-        </li>
-
-        <li class="col-xs-12 text-center dark">
-
-            <a title="wse" href="{{ url('auth/google') }}">
-                @if(Auth::guard('client')->user())
-                <img src="{{Auth::guard('client')->user()->avatar}}"/>
-                {{Auth::guard('client')->user()->name}}
-                <form action="{{ route('logout_client') }}" method="POST">
-                    {{ csrf_field() }}
-                    <button type="submit">Đăng Xuất</button>
-                </form>
-                @else
-                <span class="fa fa-hand-o-right"></span><br>Google
-                @endif
-            </a>
-
+            {{Auth::guard('client')->user()->name}}
+            <img src="{{Auth::guard('client')->user()->avatar}}"/>
+            <form action="{{ route('logout_client') }}" method="POST">
+                {{ csrf_field() }}
+                <button type="submit">Đăng Xuất</button>
+            </form>
         </li>
     </ul>
+    @else
+    <ul id="right-side-bar" class="nav">
+        <li class="col-xs-12 text-center dark">
+            <a title="wse" href="{{ url('auth/google') }}">
+                <span class="fa fa-hand-o-right"></span><br>Google
+            </a>
+        </li>
+        <li class="col-xs-12 text-center dark">
+            <a title="wse" href="{{ url('auth/facebook') }}">
+                <span class="fa fa-hand-o-right"></span><br>Facebook
+            </a>
+        </li> 
+    </ul> 
+    @endif 
 </div>
 <div class="section parallax padding-vertical-60" style="background-image:url('mis/dark-space-desktop-background.jpg')" data-stellar-background-ratio="0.4">
     <div class="section">
