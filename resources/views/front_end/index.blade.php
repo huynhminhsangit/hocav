@@ -19,7 +19,7 @@
     <ul id="right-side-bar" class="nav">
         <li class="col-xs-12 text-center dark">
             <a title="wse" href="{{ url('auth/google') }}">
-                <span class="fa fa-hand-o-right"></span><br>Google
+                <span class="fa fa-hand-o-right"></span><br>Facebook
             </a>
         </li>
         <li class="col-xs-12 text-center dark">
