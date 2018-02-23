@@ -56,7 +56,8 @@
         <h1 class=" white">Giới thiệu về chúng tôi</h1>
     </div>
     <div class="container">
-dssd!</p>
+
+        <p class="heading-desc centered white">sdsdd</p>
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
