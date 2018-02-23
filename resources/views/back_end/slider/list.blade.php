@@ -15,18 +15,18 @@
       <i class="fa fa-address-book"></i> DANH SÁCH SLIDER</div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover table-dark text-center" datatable="ng" dt-options="dtOptions" ng-init="loadData()">
+          <table class="table table-striped table-bordered table-hover table-dark text-center" dt-column-defs="dtColumnDefs" datatable="ng" dt-options="dtOptions" ng-init="loadData()">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Tên</th>
                 <th>Hình Ảnh</th>
                 <th>Thời Gian Cập Nhật</th>
-                <th>Sửa</th>
                 <th></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak" ng-if="nameslider1.name"><% nameslider1.name %></div> <div class="text-danger ng-cloak" ng-if="nameslider1.error"><% nameslider1.error %></div></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak" ng-if="nameslider2.name"><% nameslider2.name %></div> <div class="text-danger ng-cloak" ng-if="nameslider2.error"><% nameslider2.error %></div></th>
-                <th>Hình Đang Sử Dụng:<div class="text-danger ng-cloak" ng-if="nameslider3.name"><% nameslider3.name %></div> <div class="text-danger ng-cloak" ng-if="nameslider3.error"><% nameslider3.error %></div></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -42,9 +42,9 @@
                 <td class="align-middle ng-cloak"> <% slider.updated_at %> </td>
                 <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="showupdate(slider.id)">Sửa</button></td>
                 <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="delete(slider.id)">Xóa</button></td> 
-                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setslider1(slider.id)">Thiết Lập Slider 1</button></td>
-                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setslider2(slider.id)">Thiết Lập Slider 2</button></td>
-                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setslider3(slider.id)">Thiết Lập Slider 3</button></td>
+                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setslider1(slider.id)" ng-hide="nameslider1.id == slider.id">Sử Dụng</button><div class="text-danger ng-cloak" ng-show="nameslider1.id == slider.id" > Đang Sử Dụng</div></td>
+                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setslider2(slider.id)" ng-hide="nameslider2.id == slider.id">Sử Dụng</button><div class="text-danger ng-cloak" ng-show="nameslider2.id == slider.id" > Đang Sử Dụng</div></td>
+                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setslider3(slider.id)" ng-hide="nameslider3.id == slider.id">Sử Dụng</button><div class="text-danger ng-cloak" ng-show="nameslider3.id == slider.id" > Đang Sử Dụng</div></td>
               </tr>
             </tbody>
           </table>

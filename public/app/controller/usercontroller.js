@@ -1,4 +1,4 @@
-app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, DTColumnBuilder){
+app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, DTColumnDefBuilder){
 
   $scope.dtOptions = DTOptionsBuilder.newOptions()
   .withDOM('bfltip')
@@ -17,6 +17,11 @@ app.controller('UserController', function ($scope, $http,API,DTOptionsBuilder, D
       }
     }
     ]);
+  $scope.dtColumnDefs = [
+  DTColumnDefBuilder.newColumnDef(4).notSortable(),
+  DTColumnDefBuilder.newColumnDef(5).notSortable(),
+  DTColumnDefBuilder.newColumnDef(6).notSortable(),
+  ];
   $scope.loadData = function() {
     $http.get(API + 'getlistuser').then(function(response){
      $scope.user=response.data;

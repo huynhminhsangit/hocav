@@ -1,4 +1,4 @@
-app.controller('ClientController', function ($scope, $http,API,DTOptionsBuilder){
+app.controller('ClientController', function ($scope, $http,API,DTOptionsBuilder, DTColumnDefBuilder){
 
   $scope.dtOptions = DTOptionsBuilder.newOptions()
   .withDOM('bfltip')
@@ -11,6 +11,11 @@ app.controller('ClientController', function ($scope, $http,API,DTOptionsBuilder)
     'excel',
     'pdf',
     ]);
+  $scope.dtColumnDefs = [
+  DTColumnDefBuilder.newColumnDef(4).notSortable(),
+  DTColumnDefBuilder.newColumnDef(6).notSortable(),
+  DTColumnDefBuilder.newColumnDef(7).notSortable(),
+  ];
   $scope.loadData = function() {
     $http.get(API + 'getlistclient').then(function(response){
      $scope.client=response.data;

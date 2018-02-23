@@ -1,14 +1,9 @@
-app.controller('SliderController', function ($scope, Upload, $http,API,DTOptionsBuilder){
+app.controller('SliderController', function ($scope, Upload, $http,API,DTOptionsBuilder, DTColumnDefBuilder){
   $scope.dtOptions = DTOptionsBuilder.newOptions()
   .withDOM('bfltip')
   .withLanguage(language)
   .withButtons([
     'colvis',
-    'csv',
-    'copy',
-    'print',
-    'excel',
-    'pdf',
     {
       text: 'Thêm',
       action: function ( e, dt, node, config ) {
@@ -16,6 +11,14 @@ app.controller('SliderController', function ($scope, Upload, $http,API,DTOptions
       }
     }
     ]);
+  $scope.dtColumnDefs = [
+  DTColumnDefBuilder.newColumnDef(7).notSortable(),
+  DTColumnDefBuilder.newColumnDef(8).notSortable(),
+  DTColumnDefBuilder.newColumnDef(6).notSortable(),
+  DTColumnDefBuilder.newColumnDef(5).notSortable(),
+  DTColumnDefBuilder.newColumnDef(4).notSortable(),
+  DTColumnDefBuilder.newColumnDef(2).notSortable(),
+  ];
   $scope.delete = function(id) {
     $http.delete(API + 'slider/' + id).then(function(response){
       $scope.loadData();
@@ -28,12 +31,15 @@ app.controller('SliderController', function ($scope, Upload, $http,API,DTOptions
     });
     $http.get(API + 'nameslider1').then(function(response){
       $scope.nameslider1=response.data;   
+      console.clear();  
     }); 
     $http.get(API + 'nameslider2').then(function(response){
-      $scope.nameslider2=response.data;    
+      $scope.nameslider2=response.data;
+      console.clear();      
     });  
     $http.get(API + 'nameslider3').then(function(response){
       $scope.nameslider3=response.data;  
+      console.clear();  
     }); 
   }
 

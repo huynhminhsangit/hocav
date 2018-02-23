@@ -12,7 +12,7 @@
             <div class="form-group">
               <label class="control-label col-sm-2">Tên:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" readonly ng-required="true" autocomplete="off">
+                <input type="text" class="form-control" ng-model="personal.name" name="user_name_personal" id="descrip" ng-readonly="!text" ng-required="true" autocomplete="off">
                 <div ng-show="frmpersonal.user_name_personal.$dirty && frmpersonal.user_name_personal.$invalid" class=" ng-cloak">
                   <span class="help-block text-danger" ng-value="frmpersonal.user_name_personal.$error.required" ng-show="frmpersonal.user_name_personal.$error.required">Không Được Trống</span> </div>
                 </div>
@@ -20,14 +20,14 @@
               <div class="form-group">
                 <label class="control-label col-sm-2">Email:</label>
                 <div class="col-sm-10">
-                  <input type="Email" class="form-control" ng-model="personal.email" name="user_email_personal" id="descrip1" readonly ng-required="true" autocomplete="off">
+                  <input type="Email" class="form-control" ng-model="personal.email" name="user_email_personal" id="descrip1" ng-readonly="!text" ng-required="true" autocomplete="off">
                   <div ng-show="frmpersonal.user_email_personal.$dirty && frmpersonal.user_email_personal.$invalid" class=" ng-cloak">
                     <span class="help-block text-danger ng-cloak" ng-show="frmpersonal.user_email_personal.$error.required">Không Được Trống</span>
                     <span class="help-block text-danger ng-cloak" ng-show="frmpersonal.user_email_personal.$error.email">Phải là chuẩn email</span>
                   </div>
                 </div>
               </div> 
-              <div class="form-group" id="imag" style="display: none;">
+              <div class="form-group" ng-show="show">
                 <label class="control-label col-sm-2">Hình Ảnh:</label>
                 <div class="col-sm-10">
                   <input type="file" ngf-select ng-model="picFile" name="file" >
@@ -36,8 +36,8 @@
               </div>         
               <div class="form-group">        
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="button" class="btn btn-default" id="addButton" style="display: none;" ng-click="uploadPic(picFile)">Đồng ý</button>
-                  <button type="button" class="btn btn-default" id="act">Sửa</button>
+                  <button type="button" class="btn btn-default" ng-show="show" ng-click="uploadPic(picFile);show=false;text=false">Đồng ý</button>
+                  <button type="button" class="btn btn-default" ng-hide="show" ng-click="show=true;text=true">Sửa</button>
                   <a class="pl-5" href="{{ url('personal/pass') }}">Đổi mật khẩu</a>
                 </div>        
               </div>

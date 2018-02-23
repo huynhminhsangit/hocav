@@ -84,7 +84,7 @@
         <li class="nav-item">          
           <img ng-src="{{ url('mis/blank.png') }}" class="rounded-circle" height="40px" width="40px"/>
           @else
-          <img ng-src="{{ url('avatar/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
+          <img ng-src="{{ url('img_avatar/'.Auth::user()->avatar) }}" class="rounded-circle" height="40px" width="40px"/>
         </li>
         @endif
         <li class="nav-item">

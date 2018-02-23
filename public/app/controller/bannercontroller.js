@@ -1,11 +1,12 @@
-app.controller('BannerController', function ($scope, Upload, $http,API,DTOptionsBuilder){
+app.controller('BannerController', function ($scope, Upload, $http,API,DTOptionsBuilder, DTColumnDefBuilder){
   $scope.loadData = function() {
     $http.get(API + 'getlistbanner').then(function(response){
       $scope.banner=response.data; 
       console.clear();   
     });
       $http.get(API + 'namebanner').then(function(response){
-        $scope.namebanner=response.data;     
+        $scope.namebanner=response.data;  
+        console.clear();   
    });    
   }
   $scope.delete = function(id) {
@@ -87,11 +88,6 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
   .withLanguage(language)
   .withButtons([
     'colvis',
-    'csv',
-    'copy',
-    'print',
-    'excel',
-    'pdf',
     {
       text: 'Thêm',
       action: function ( e, dt, node, config ) {
@@ -99,5 +95,11 @@ app.controller('BannerController', function ($scope, Upload, $http,API,DTOptions
       }
     }
     ]);
+  $scope.dtColumnDefs = [
+  DTColumnDefBuilder.newColumnDef(6).notSortable(),
+  DTColumnDefBuilder.newColumnDef(5).notSortable(),
+  DTColumnDefBuilder.newColumnDef(4).notSortable(),
+  DTColumnDefBuilder.newColumnDef(2).notSortable(),
+  ];
 
 });

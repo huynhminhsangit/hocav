@@ -1,0 +1,30 @@
+<?php
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class QuestionsOption
+ *
+ * @package App
+ * @property string $question
+ * @property string $option
+ * @property tinyInteger $correct
+*/
+class QuestionsOption extends Model
+{
+    
+    protected $fillable = ['option', 'correct', 'question_id'];
+    
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'question_id');
+    }
+    
+}

@@ -74,4 +74,7 @@ Route::get('auth/facebook', 'AuthController@redirectfacebook');
 Route::get('auth/facebook/callback', 'AuthController@handlefacebook');
 Route::post('aulogoutth/client', 'AuthController@logout')->name('logout_client');
 
+Route::resource('tests', 'TestsController');
+Route::resource('results', 'ResultsController');
+
 Route::get('gay', 'GayController@gay');

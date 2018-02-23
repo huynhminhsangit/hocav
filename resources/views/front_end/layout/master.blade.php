@@ -41,11 +41,7 @@
                                     <li><a href="blog-grid-no-bar.html">Từ vựng theo chủ đề</a></li>
                                 </ul>
                             </li>
-
                             <li class="mega-menu"><a href="#">Liên hệ</a></li>
-
-
-
                         </ul>
                     </nav>
                     <div class="f-right">
@@ -59,7 +55,7 @@
                 </div>
             </div>
         </header>
-        <div ng-controller="ShowController">
+        <div ng-controller="ShowController">            
             @yield('content')
         </div>
         <footer id="footWrapper">

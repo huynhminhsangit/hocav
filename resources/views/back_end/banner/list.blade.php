@@ -15,19 +15,16 @@
       <i class="fa fa-address-book"></i> DANH SÁCH BANNER</div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover table-dark text-center" datatable="ng" dt-options="dtOptions" ng-init="loadData()">
+          <table class="table table-striped table-bordered table-hover table-dark text-center" datatable="ng" dt-column-defs="dtColumnDefs" dt-options="dtOptions" ng-init="loadData()">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Tên</th>
                 <th>Hình Ảnh</th>
                 <th>Thời Gian Cập Nhật</th>
-                <th>Sửa</th>
                 <th></th>
-                <th>Hình Đang Sử Dụng:
-                  <div class="text-danger ng-cloak" ng-if="namebanner.name" ><%namebanner.name%></div>
-                  <div class="text-danger ng-cloak" ng-if="namebanner.error" ><%namebanner.error%></div>
-                </th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -40,10 +37,10 @@
                   <a href="<%'img_banner/' + banner.image%>"> <img ng-src="<%'img_banner/' + banner.image%>" class="rounded" height="100px" width="100px" ng-if="banner.image"/></a>                 
                 </td>
                 
-                <td class="align-middle ng-cloak"> <% banner.updated_at %> </td>
+                <td class="align-middle ng-cloak"> <% banner.updated_at | amDateFormat:'dddd, Do MMMM  YYYY h:mm:ss'%></td>
                 <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="showupdate(banner.id)">Sửa</button></td>
                 <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="delete(banner.id)">Xóa</button></td> 
-                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setbanner(banner.id)">Thiết Lập Banner</button></td>
+                <td class="align-middle ng-cloak"><button type="button" class="btn btn-default" ng-click="setbanner(banner.id)" ng-hide="namebanner.id == banner.id">Sử Dụng</button><div class="text-danger ng-cloak" ng-show="namebanner.id == banner.id" > Đang Sử Dụng</div></td>
               </tr>
             </tbody>
           </table>
