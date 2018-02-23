@@ -56,8 +56,7 @@
         <h1 class=" white">Giới thiệu về chúng tôi</h1>
     </div>
     <div class="container">
-
-        <p class="heading-desc centered white">Bạn muốn sở hữu một bộ ảnh cưới lãng mạn? Nhẹ nhàng? Cá tính? Trẻ trung? Độc đáo hay đơn giản là những khoảnh khắc yêu thương của cả hai bạn từ những ngày đầu mới yêu? Lê Huy sẽ cùng bạn lưu giữ những giây phút hạnh phúc và thiêng liêng nhất trước khi bước vào cuộc sống hôn nhân sống động đầy màu sắc!</p>
+dssd!</p>
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
